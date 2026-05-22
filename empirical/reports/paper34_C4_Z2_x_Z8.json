@@ -1,0 +1,186 @@
+{
+  "name": "Z/2 x Z/8",
+  "latex": "\\mathbb{Z}/2 \\times \\mathbb{Z}/8",
+  "moduli": [
+    2,
+    8
+  ],
+  "order": 16,
+  "tangent_dim": 15,
+  "packets": {
+    "2": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "4": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        6
+      ]
+    ],
+    "8": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        7
+      ]
+    ]
+  },
+  "packet_sizes": {
+    "2": 3,
+    "4": 4,
+    "8": 8
+  },
+  "fisher_block_diagonal": true,
+  "selection_rule_total_triples": 210,
+  "expected_total_triples_closed_form": 210,
+  "cross_packet_triples_count": 204,
+  "same_packet_triples_count": 6,
+  "diagnostic_applicable": true,
+  "sample_cross_packet_triples": [
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        1
+      ],
+      "m": [
+        0,
+        6
+      ],
+      "conds": [
+        8,
+        8,
+        4
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        2
+      ],
+      "m": [
+        0,
+        5
+      ],
+      "conds": [
+        8,
+        4,
+        8
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        3
+      ],
+      "m": [
+        0,
+        4
+      ],
+      "conds": [
+        8,
+        8,
+        2
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        4
+      ],
+      "m": [
+        0,
+        3
+      ],
+      "conds": [
+        8,
+        2,
+        8
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        5
+      ],
+      "m": [
+        0,
+        2
+      ],
+      "conds": [
+        8,
+        8,
+        4
+      ]
+    }
+  ]
+}

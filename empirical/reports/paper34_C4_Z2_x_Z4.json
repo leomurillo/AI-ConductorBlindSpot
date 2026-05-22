@@ -1,0 +1,151 @@
+{
+  "name": "Z/2 x Z/4",
+  "latex": "\\mathbb{Z}/2 \\times \\mathbb{Z}/4",
+  "moduli": [
+    2,
+    4
+  ],
+  "order": 8,
+  "tangent_dim": 7,
+  "packets": {
+    "2": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "4": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        3
+      ]
+    ]
+  },
+  "packet_sizes": {
+    "2": 3,
+    "4": 4
+  },
+  "fisher_block_diagonal": true,
+  "selection_rule_total_triples": 42,
+  "expected_total_triples_closed_form": 42,
+  "cross_packet_triples_count": 36,
+  "same_packet_triples_count": 6,
+  "diagnostic_applicable": true,
+  "sample_cross_packet_triples": [
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        1
+      ],
+      "m": [
+        0,
+        2
+      ],
+      "conds": [
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        0,
+        2
+      ],
+      "m": [
+        0,
+        1
+      ],
+      "conds": [
+        4,
+        2,
+        4
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        1,
+        0
+      ],
+      "m": [
+        1,
+        3
+      ],
+      "conds": [
+        4,
+        2,
+        4
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        1,
+        1
+      ],
+      "m": [
+        1,
+        2
+      ],
+      "conds": [
+        4,
+        4,
+        2
+      ]
+    },
+    {
+      "k": [
+        0,
+        1
+      ],
+      "l": [
+        1,
+        2
+      ],
+      "m": [
+        1,
+        1
+      ],
+      "conds": [
+        4,
+        2,
+        4
+      ]
+    }
+  ]
+}

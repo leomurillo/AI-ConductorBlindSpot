@@ -1,0 +1,59 @@
+% =============================================================================
+% Custom preamble for ConductorBlindSpot (pandoc -> XeLaTeX)
+% Pulled in via `--include-in-header` by build.ps1 / build.sh.
+%
+% This file is injected into pandoc's default LaTeX template at the
+% `header-includes` slot, which runs BEFORE pandoc's own \usepackage{hyperref}
+% and \usepackage{unicode-math}. We therefore:
+%   * load `mathtools` here (so it precedes unicode-math, per its manual),
+%   * defer any \hypersetup{...} with \AtBeginDocument{...}.
+% We only ADD or tune; we do not reload packages pandoc already loads
+% (amsmath, amssymb, amsfonts, hyperref, xcolor, fontspec, unicode-math).
+% =============================================================================
+
+% ---- Math / symbols (mathtools must precede unicode-math) ------------------
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+% ---- Typography -------------------------------------------------------------
+\usepackage{microtype}
+\usepackage{booktabs}
+
+% ---- TikZ for the few embedded figures (loaded for both papers; harmless if
+% no tikzpicture environment appears in the source) -------------------------
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+% Let LaTeX stretch lines a bit further when it can't find a clean break;
+% keeps overfull hboxes out of display math and URL-heavy lines.
+\setlength{\emergencystretch}{3em}
+% Make long URLs breakable at hyphens (applied before hyperref loads).
+\PassOptionsToPackage{hyphens}{url}
+
+% ---- Section heading polish -------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{0.75em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+
+% ---- Hyperref polish ----------------------------------------------------
+% PDF metadata (pdftitle/pdfauthor/...) is driven by pandoc's -V flags
+% (title/author from the front matter), so the preamble stays paper-neutral.
+
+% ---- Theorem-like environments (available if source ever migrates) ---------
+% The markdown source uses `**Theorem 4.1 (title).**` bold-header paragraphs
+% rather than native environments, so these are currently unused by the body
+% but are kept here so a future migration does not require a preamble change.
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}

@@ -1,0 +1,55 @@
+{
+  "n": 6,
+  "packets": {
+    "2": [
+      3
+    ],
+    "3": [
+      2,
+      4
+    ],
+    "6": [
+      1,
+      5
+    ]
+  },
+  "tangent_dim": 5,
+  "fisher_offdiag_max_abs": 1.1835178810661165e-14,
+  "fisher_block_diagonal": true,
+  "selection_rule_total_triples": 20,
+  "cross_packet_triples_count": 18,
+  "expected_cross_packet_triples": 18,
+  "cubic_pstar_value_on_selection_rule": 216,
+  "sample_cross_packet_triples": [
+    [
+      1,
+      1,
+      4
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      1,
+      3,
+      2
+    ],
+    [
+      1,
+      4,
+      1
+    ],
+    [
+      2,
+      1,
+      3
+    ],
+    [
+      2,
+      3,
+      1
+    ]
+  ]
+}

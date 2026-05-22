@@ -1,0 +1,117 @@
+[
+  {
+    "model": "EleutherAI/pythia-70m",
+    "load_time_s": 12.29,
+    "fwd_time_s": 3.09,
+    "vram_gb": 0.143,
+    "ring_mass_space": 0.0144,
+    "ring_mass_bare": 0.0018,
+    "style": "space",
+    "top1_acc": 0.0833,
+    "batch_mean": {
+      "ring_rho_x": 0.8908,
+      "perm_rho_x_mean": 0.9702,
+      "perm_rho_x_std": 0.0369,
+      "separation": 0.0794
+    },
+    "per_example": {
+      "ring_rho_x": 0.9793,
+      "ring_rho_x_std": 0.0114,
+      "perm_rho_x_mean": 0.9793,
+      "perm_rho_x_std": 0.0013,
+      "separation": 0.0
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-160m",
+    "load_time_s": 7.74,
+    "fwd_time_s": 3.43,
+    "vram_gb": 0.34,
+    "ring_mass_space": 0.2532,
+    "ring_mass_bare": 0.0002,
+    "style": "space",
+    "top1_acc": 0.0167,
+    "batch_mean": {
+      "ring_rho_x": 0.9236,
+      "perm_rho_x_mean": 0.9539,
+      "perm_rho_x_std": 0.058,
+      "separation": 0.0303
+    },
+    "per_example": {
+      "ring_rho_x": 0.9781,
+      "ring_rho_x_std": 0.011,
+      "perm_rho_x_mean": 0.9795,
+      "perm_rho_x_std": 0.0015,
+      "separation": 0.0014
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-410m",
+    "load_time_s": 16.71,
+    "fwd_time_s": 7.2,
+    "vram_gb": 0.819,
+    "ring_mass_space": 0.8483,
+    "ring_mass_bare": 0.0007,
+    "style": "space",
+    "top1_acc": 0.9,
+    "batch_mean": {
+      "ring_rho_x": 0.9534,
+      "perm_rho_x_mean": 0.9685,
+      "perm_rho_x_std": 0.0442,
+      "separation": 0.0151
+    },
+    "per_example": {
+      "ring_rho_x": 0.9601,
+      "ring_rho_x_std": 0.0087,
+      "perm_rho_x_mean": 0.9747,
+      "perm_rho_x_std": 0.005,
+      "separation": 0.0146
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "load_time_s": 171.57,
+    "fwd_time_s": 4.83,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.6249,
+    "ring_mass_bare": 0.0007,
+    "style": "space",
+    "top1_acc": 0.5333,
+    "batch_mean": {
+      "ring_rho_x": 0.9516,
+      "perm_rho_x_mean": 0.9696,
+      "perm_rho_x_std": 0.0364,
+      "separation": 0.018
+    },
+    "per_example": {
+      "ring_rho_x": 0.9729,
+      "ring_rho_x_std": 0.0126,
+      "perm_rho_x_mean": 0.9774,
+      "perm_rho_x_std": 0.0035,
+      "separation": 0.0045
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1.4b",
+    "load_time_s": 236.77,
+    "fwd_time_s": 5.15,
+    "vram_gb": 2.838,
+    "ring_mass_space": 0.6133,
+    "ring_mass_bare": 0.0018,
+    "style": "space",
+    "top1_acc": 0.7,
+    "batch_mean": {
+      "ring_rho_x": 0.9998,
+      "perm_rho_x_mean": 0.9536,
+      "perm_rho_x_std": 0.0706,
+      "separation": -0.0462
+    },
+    "per_example": {
+      "ring_rho_x": 0.9733,
+      "ring_rho_x_std": 0.012,
+      "perm_rho_x_mean": 0.9771,
+      "perm_rho_x_std": 0.0033,
+      "separation": 0.0038
+    }
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step128",
+    "step": 128,
+    "tokens": 268435456,
+    "load_time_s": 153.25,
+    "fwd_time_s": 4.14,
+    "vram_gb": 2.024,
+    "ring_mass_space": 0.0003,
+    "ring_mass_bare": 0.0002,
+    "style": "space",
+    "top1_acc": 0.0833,
+    "batch_mean": {
+      "ring_rho_x": 0.9709,
+      "perm_rho_x_mean": 0.9721,
+      "perm_rho_x_std": 0.0225,
+      "separation": 0.0012
+    },
+    "per_example": {
+      "ring_rho_x": 0.9801,
+      "ring_rho_x_std": 0.009,
+      "perm_rho_x_mean": 0.9804,
+      "perm_rho_x_std": 0.0012,
+      "separation": 0.0003
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step1000",
+    "step": 1000,
+    "tokens": 2097152000,
+    "load_time_s": 129.89,
+    "fwd_time_s": 3.43,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.1711,
+    "ring_mass_bare": 0.0052,
+    "style": "space",
+    "top1_acc": 0.05,
+    "batch_mean": {
+      "ring_rho_x": 0.9833,
+      "perm_rho_x_mean": 0.9753,
+      "perm_rho_x_std": 0.0167,
+      "separation": -0.008
+    },
+    "per_example": {
+      "ring_rho_x": 0.9796,
+      "ring_rho_x_std": 0.0113,
+      "perm_rho_x_mean": 0.9782,
+      "perm_rho_x_std": 0.0012,
+      "separation": -0.0014
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step3000",
+    "step": 3000,
+    "tokens": 6291456000,
+    "load_time_s": 143.03,
+    "fwd_time_s": 4.41,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.0071,
+    "ring_mass_bare": 0.0008,
+    "style": "space",
+    "top1_acc": 0.0333,
+    "batch_mean": {
+      "ring_rho_x": 0.8707,
+      "perm_rho_x_mean": 0.9699,
+      "perm_rho_x_std": 0.0357,
+      "separation": 0.0992
+    },
+    "per_example": {
+      "ring_rho_x": 0.9805,
+      "ring_rho_x_std": 0.0095,
+      "perm_rho_x_mean": 0.9795,
+      "perm_rho_x_std": 0.0016,
+      "separation": -0.0009
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step10000",
+    "step": 10000,
+    "tokens": 20971520000,
+    "load_time_s": 146.22,
+    "fwd_time_s": 5.92,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.0518,
+    "ring_mass_bare": 0.0009,
+    "style": "space",
+    "top1_acc": 0.0333,
+    "batch_mean": {
+      "ring_rho_x": 0.9292,
+      "perm_rho_x_mean": 0.9639,
+      "perm_rho_x_std": 0.0393,
+      "separation": 0.0347
+    },
+    "per_example": {
+      "ring_rho_x": 0.9831,
+      "ring_rho_x_std": 0.0089,
+      "perm_rho_x_mean": 0.9796,
+      "perm_rho_x_std": 0.0019,
+      "separation": -0.0035
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step30000",
+    "step": 30000,
+    "tokens": 62914560000,
+    "load_time_s": 151.98,
+    "fwd_time_s": 4.29,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.4556,
+    "ring_mass_bare": 0.0009,
+    "style": "space",
+    "top1_acc": 0.3,
+    "batch_mean": {
+      "ring_rho_x": 0.9836,
+      "perm_rho_x_mean": 0.9669,
+      "perm_rho_x_std": 0.0494,
+      "separation": -0.0167
+    },
+    "per_example": {
+      "ring_rho_x": 0.9797,
+      "ring_rho_x_std": 0.0108,
+      "perm_rho_x_mean": 0.979,
+      "perm_rho_x_std": 0.0022,
+      "separation": -0.0006
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step70000",
+    "step": 70000,
+    "tokens": 146800640000,
+    "load_time_s": 178.61,
+    "fwd_time_s": 3.07,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.2389,
+    "ring_mass_bare": 0.0003,
+    "style": "space",
+    "top1_acc": 0.3333,
+    "batch_mean": {
+      "ring_rho_x": 0.8392,
+      "perm_rho_x_mean": 0.973,
+      "perm_rho_x_std": 0.0336,
+      "separation": 0.1338
+    },
+    "per_example": {
+      "ring_rho_x": 0.9769,
+      "ring_rho_x_std": 0.0135,
+      "perm_rho_x_mean": 0.979,
+      "perm_rho_x_std": 0.0023,
+      "separation": 0.0021
+    }
+  },
+  {
+    "model": "EleutherAI/pythia-1b",
+    "revision": "step143000",
+    "step": 143000,
+    "tokens": 299892736000,
+    "load_time_s": 180.36,
+    "fwd_time_s": 3.31,
+    "vram_gb": 2.032,
+    "ring_mass_space": 0.6249,
+    "ring_mass_bare": 0.0007,
+    "style": "space",
+    "top1_acc": 0.5333,
+    "batch_mean": {
+      "ring_rho_x": 0.9516,
+      "perm_rho_x_mean": 0.9696,
+      "perm_rho_x_std": 0.0364,
+      "separation": 0.018
+    },
+    "per_example": {
+      "ring_rho_x": 0.9729,
+      "ring_rho_x_std": 0.0126,
+      "perm_rho_x_mean": 0.9774,
+      "perm_rho_x_std": 0.0035,
+      "separation": 0.0045
+    }
+  }
+]

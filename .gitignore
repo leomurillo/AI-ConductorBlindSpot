@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+build/*.aux
+build/*.log
+build/*.toc
+build/*.xdv
+build/*.fls
+build/*.fdb_latexmk
+.DS_Store
