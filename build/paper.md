@@ -1,16 +1,12 @@
----
+﻿---
 title: "The Conductor Blind Spot of the Quadratic Curvature Class on Ring-Structured Categorical Heads"
 author: "Leonardo Murillo Montero"
 date: "May 19, 2026"
 abstract: |
-  
   Second-order curvature surrogates — natural gradient, K-FAC, Gauss–Newton, and Adam's diagonal empirical-Fisher proxy — are widely deployed on tasks with cyclic categorical structure: modular arithmetic, calendar / clock heads, periodic phase prediction. We prove that at the maximum-entropy point $p_*$ of such a head, all of them share an exact structural *blind spot*: a third-order coupling carried by the Amari–Chentsov cubic that the quadratic curvature class cannot represent. The proof rests on two finite identities that hold exactly at $p_*$ on a categorical model with cyclic ring index $R = \mathbb{Z}/n\mathbb{Z}$: the Fisher information form $g_{p_*}$ is diagonal in the additive-character basis, hence block-diagonal across the conductor-packet decomposition of the tangent space; and the Amari–Chentsov cubic form $T_{p_*}$ couples distinct conductor packets exactly under the integer selection rule $k + \ell + m \equiv 0 \pmod n$. The cross-packet cubic coupling is therefore outside the representational capacity of $g_{p_*}$, and outside the surrogates above plus the neural-tangent-kernel Gram by §2.3's four-tier lift; the same identity lifts at $p_*$ to the head-side input of linear gradient-based edge-attribution scores in mechanistic circuit discovery (EAP-family methods). We verify the certificate computationally for $n \in \{6, 8, 12, 18, 30\}$ in exact integer arithmetic.
   
   From the certificate we derive a retraining-free diagnostic $\rho_\times$ (an L1 spectral-mass ratio on $p_*$-anchored selection-rule triples) and pre-specify a single experiment with a built-in negative control. A synthetic-MLP demo (§6.5) separates ring task from structureless control in the pre-grokking phase; a Pythia checkpoint sweep on a calendar-months head (§6.6) identifies the diagnostic's off-trajectory boundary. Three head-only cubic-aware interventions on $n = 30$ all return Branch B (§8.6): on this evidence the certificate's role is *measurement*, not *steering*. Open follow-ups — $\alpha$-sweep, parameter-side K-FAC variant, longer-budget rings, trajectory instrumentation — are listed in §8.6.
 ---
-
-
-
 **Keywords:** second-order optimization, natural gradient, Fisher information, Amari–Chentsov tensor, categorical models, additive characters, conductor decomposition, ring-structured labels, preconditioning, information geometry, grokking.
 
 **MSC 2020:** 53B12 (information geometry); 62B10 (statistical aspects of information theory); 68T07 (artificial neural networks and deep learning); 11L03 (elementary character sums); 65K10 (numerical optimization).
@@ -616,7 +612,7 @@ Definitions 6.1 and 6.2 are deterministic functions of the model, the batch, and
 
 ### 6.5 A first-run empirical demo
 
-To illustrate the diagnostic on a concrete categorical head, we report a first-run empirical evaluation on the canonical modular-addition testbed of [Power et al. 2022; Nanda et al. 2023]. The demo uses a multi-layer architecture (a two-embedding-table MLP with a single hidden layer of GELUs and an $n$-way softmax head) trained with AdamW on $(a + b) \bmod n$ for $n \in \{6, 8, 12, 18, 30\}$, with the matched controls D2-weak (label permutation only) and D2-strong (target $= f(a, b)$ for a fixed uniformly random function $f$) of Section 6.3. The diagnostic $\rho_\times$ of Definition 6.1 is computed on the held-out test batch every 50 training steps; the time-mean $\overline{\rho_\times}$ across training is the robust summary because the per-step $\rho_\times$ oscillates as the model passes through Fourier-feature consolidation states (especially pre-grokking). The artifact is archived at [`empirical/conductor_blindspot_demo.py`](empirical/paper34_conductor_blindspot_demo.py) with run outputs in [`empirical/reports/`](empirical/reports/).
+To illustrate the diagnostic on a concrete categorical head, we report a first-run empirical evaluation on the canonical modular-addition testbed of [Power et al. 2022; Nanda et al. 2023]. The demo uses a multi-layer architecture (a two-embedding-table MLP with a single hidden layer of GELUs and an $n$-way softmax head) trained with AdamW on $(a + b) \bmod n$ for $n \in \{6, 8, 12, 18, 30\}$, with the matched controls D2-weak (label permutation only) and D2-strong (target $= f(a, b)$ for a fixed uniformly random function $f$) of Section 6.3. The diagnostic $\rho_\times$ of Definition 6.1 is computed on the held-out test batch every 50 training steps; the time-mean $\overline{\rho_\times}$ across training is the robust summary because the per-step $\rho_\times$ oscillates as the model passes through Fourier-feature consolidation states (especially pre-grokking). The artifact is archived at [`empirical/paper34_conductor_blindspot_demo.py`](https://github.com/leomurillo/AI-ConductorBlindSpot/blob/main/empirical/paper34_conductor_blindspot_demo.py) with run outputs in [`empirical/reports/`](https://github.com/leomurillo/AI-ConductorBlindSpot/tree/main/empirical/reports).
 
 The demo uses a multi-layer architecture; the diagnostic $\rho_\times$ is well-defined on the output tangent space (Section 6) regardless of depth, and the parameter-side claim (Corollary 3.9) is not directly tested by this demo. The Adam preconditioner's effective $M^{-1}$ on the held-out batch is ill-conditioned in directions the model has memorized (Remark 6.3), so the preconditioner discard ratio $\delta$ is reported but is not the primary signal; the headline measurement is $\overline{\rho_\times}$.
 
@@ -654,7 +650,7 @@ The demo's findings are reported within the tier of the diagnostic itself: well-
 
 ### 6.6 A first-run application to pretrained-LLM checkpoints
 
-The diagnostic of §6 is designed for retraining-free deployment on existing checkpoints. We report a first-run application to the Pythia suite [Biderman et al. 2023], chosen because the suite publishes ~140 intermediate checkpoints per model size across $N \in [70\text{M}, 12\text{B}]$ on identical data — giving an $N$-axis (parameter count at the final checkpoint) and a $D$-axis (training tokens at fixed $N$) from a single training run. The candidate ring-structured head is the conditional $\mathbb{Z}/12\mathbb{Z}$-categorical defined by restricting the final-layer softmax to the twelve single-token English month abbreviations under templated cyclic-shift prompts. The artifact is archived at [`empirical/pythia_rho_x_sweep/`](empirical/pythia_rho_x_sweep/).
+The diagnostic of §6 is designed for retraining-free deployment on existing checkpoints. We report a first-run application to the Pythia suite [Biderman et al. 2023], chosen because the suite publishes ~140 intermediate checkpoints per model size across $N \in [70\text{M}, 12\text{B}]$ on identical data — giving an $N$-axis (parameter count at the final checkpoint) and a $D$-axis (training tokens at fixed $N$) from a single training run. The candidate ring-structured head is the conditional $\mathbb{Z}/12\mathbb{Z}$-categorical defined by restricting the final-layer softmax to the twelve single-token English month abbreviations under templated cyclic-shift prompts. The artifact is archived at [`empirical/pythia_rho_x_sweep/`](https://github.com/leomurillo/AI-ConductorBlindSpot/tree/main/empirical/pythia_rho_x_sweep).
 
 **Setup.** Single-token verification on the GPT-NeoX tokenizer: every short-form month (Jan, …, Dec) is a single token in both bare and leading-space contexts (full month names also single-token; we use short forms throughout). Prompts: five context lengths $k \in \{3, 5, 7, 9, 11\}$ times twelve cyclic shifts, $60$ prompts per checkpoint. The continuation distribution is restricted to the twelve month-token IDs in the style (bare vs. leading-space) carrying the larger mass on the average row, then renormalized to a 12-way categorical. The diagnostic computes $\rho_\times$ both in the Definition 6.1 batch-mean form and in a per-example variant — the mean over prompts of the single-prompt $\rho_\times$ — with $50$ random control permutations of the ring index assignment per measurement. All forward passes are fp16 on a single consumer GPU (RTX 3050 Laptop, 4 GB).
 
@@ -957,6 +953,17 @@ The certificate is exact *at the maximum-entropy point*; whether the deficit per
 
 ---
 
+## Code and data availability
+
+All scripts that produce the empirical numbers, tables, and figures of this paper, together with the run outputs they produced, are released as a companion repository:
+
+* **GitHub:** <https://github.com/leomurillo/AI-ConductorBlindSpot>
+* **Zenodo archive (DOI):** *to be assigned on arXiv submission* — `10.5281/zenodo.XXXXXXX`
+
+The repository mirrors the file paths used in this manuscript: the non-cyclic certificate of Appendix B is produced by [`empirical/paper34_C4_noncyclic_certificate.py`](https://github.com/leomurillo/AI-ConductorBlindSpot/blob/main/empirical/paper34_C4_noncyclic_certificate.py); the synthetic-MLP demo of §6.5 by [`empirical/paper34_conductor_blindspot_demo.py`](https://github.com/leomurillo/AI-ConductorBlindSpot/blob/main/empirical/paper34_conductor_blindspot_demo.py); the Pythia checkpoint sweep of §6.6 by the scripts in [`empirical/pythia_rho_x_sweep/`](https://github.com/leomurillo/AI-ConductorBlindSpot/tree/main/empirical/pythia_rho_x_sweep); and the three head-only cubic-aware interventions of §8.6 by [`empirical/paper34_layer3_cubic_experiment.py`](https://github.com/leomurillo/AI-ConductorBlindSpot/blob/main/empirical/paper34_layer3_cubic_experiment.py). All checked-in run artifacts in `empirical/reports/` are the exact outputs cited in the manuscript.
+
+---
+
 ## Acknowledgments
 
 The author thanks Andrew Ross Thomson for sharing the unpublished manuscript on algebraic-geometric attention scoring that §7.6 builds on. Any errors are the author's own.
@@ -1148,7 +1155,7 @@ We enumerated the certificate on five non-cyclic candidate groups using the prog
 | $(\mathbb{Z}/2)^2 \times \mathbb{Z}/4$ | $16$ | $2{:}7,\ 4{:}8$ | $210$ | $42$ | $168$ |
 | $\mathbb{Z}/3 \times \mathbb{Z}/9$ | $27$ | $3{:}8,\ 9{:}18$ | $650$ | $218$ | $432$ |
 
-The enumeration is deterministic, exact, and reproducible; the program and full per-$G$ JSON are archived at [`empirical/noncyclic_certificate.py`](empirical/paper34_C4_noncyclic_certificate.py) and [`empirical/reports/noncyclic_summary.md`](empirical/reports/paper34_C4_noncyclic_summary.md). On every candidate the certificate holds: Fisher block-diagonality is exact, and the cross-packet AC cubic triple count is strictly positive.
+The enumeration is deterministic, exact, and reproducible; the program and full per-$G$ JSON are archived at [`empirical/paper34_C4_noncyclic_certificate.py`](https://github.com/leomurillo/AI-ConductorBlindSpot/blob/main/empirical/paper34_C4_noncyclic_certificate.py) and [`empirical/reports/paper34_C4_noncyclic_summary.md`](https://github.com/leomurillo/AI-ConductorBlindSpot/blob/main/empirical/reports/paper34_C4_noncyclic_summary.md). On every candidate the certificate holds: Fisher block-diagonality is exact, and the cross-packet AC cubic triple count is strictly positive.
 
 **Distinct distribution from the cyclic counterpart at equal order.** $\mathbb{Z}/2 \times \mathbb{Z}/4$ and $\mathbb{Z}/8$ both have order $8$ and an identical structural cap on total triples ($42$), yet differ on the same-packet count ($6$ vs $0$). The certificate is preserved in both, but the structural ceiling of $\rho_\times$ (the largest fraction attainable at a uniform $u$, equal to cross/total) shifts from $1.00$ in $\mathbb{Z}/8$ to $36/42 \approx 0.857$ in $\mathbb{Z}/2 \times \mathbb{Z}/4$. This is a property of the divisor lattice of $G$ alone.
 
