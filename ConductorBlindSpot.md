@@ -1608,7 +1608,10 @@ The dual control is essential because, as observed in the demo of \hyperref[sec:
 
 **Primary endpoint.** The *primary interaction* between optimizer arm and task, computed against T2-strong:
 $$
-\text{interaction} \;:=\; \big(\text{delay-gap reduction on T1 under A2 vs A1}\big) - \big(\text{delay-gap reduction on T2-strong under A2 vs A1}\big).
+\begin{aligned}
+\text{interaction} \;:=\;\; & \big(\text{delay-gap reduction on T1 under A2 vs A1}\big) \\
+&{}- \big(\text{delay-gap reduction on T2-strong under A2 vs A1}\big).
+\end{aligned}
 $$
 \hyperlink{stmt:5-8}{Conjecture~5.8} predicts a strictly positive primary interaction. **Secondary endpoint:** the same interaction against T2-weak; its informative value lies in the *difference* T2-weak $-$ T2-strong, which is a quantitative indicator of how much internal ring structure the architecture learns upstream of the head. The main effects on T1 alone are *not* the endpoint, because a main effect without the asymmetry is consistent with a generic preconditioning improvement and does not bear on the conductor mechanism.
 
