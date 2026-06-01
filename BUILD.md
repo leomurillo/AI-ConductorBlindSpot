@@ -2,8 +2,7 @@
 
 This document describes how to reproduce the PDF from the canonical markdown
 source (`ConductorBlindSpot.md`). The build is deliberately minimal and fully
-offline after the one-time toolchain install. It mirrors the build pipeline of
-the `01.simplicial_vector_algebra` paper one folder up.
+offline after the one-time toolchain install.
 
 ## What the build does
 
@@ -24,6 +23,8 @@ the `01.simplicial_vector_algebra` paper one folder up.
 
 Intermediate artifacts live under `build/` and are safe to delete at any
 time. Pass `-Clean` (PowerShell) or `--clean` (bash) to force a fresh build.
+For the full repository validation checklist, see
+[`docs/validation.md`](docs/validation.md).
 
 ## Directory layout
 
@@ -51,16 +52,16 @@ pwsh ./build.ps1 -SkipPdf    # stop after generating build/paper.tex
 ## Linux / macOS
 
 ```bash
-chmod +x build.sh
-./build.sh                   # incremental
-./build.sh --clean           # wipe build/ first
-./build.sh --skip-pdf        # stop after generating build/paper.tex
+bash build.sh                # incremental
+bash build.sh --clean        # wipe build/ first
+bash build.sh --skip-pdf     # stop after generating build/paper.tex
 ```
 
-For one-time toolchain installation (pandoc + MiKTeX/TeX Live), see the
-`BUILD.md` of the sibling `01.simplicial_vector_algebra` paper one folder up.
-The two pipelines share toolchain requirements and differ only in source
-filename.
+One-time toolchain installation requires Pandoc plus a XeLaTeX-capable TeX
+distribution (`latexmk` and `xelatex`). On macOS, `brew install pandoc` plus
+MacTeX or BasicTeX with the standard LaTeX packages is sufficient; on Linux,
+install `pandoc`, `texlive-xetex`, `latexmk`, `texlive-fonts-recommended`, and
+`texlive-latex-extra` or the distribution equivalents.
 
 ## Expected output (smoke test)
 

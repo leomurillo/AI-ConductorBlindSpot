@@ -24,6 +24,20 @@ MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 N = 12
 
 PYTHIA_SIZES = ["pythia-70m", "pythia-160m", "pythia-410m", "pythia-1b", "pythia-1.4b"]
+DEFAULT_MODEL_REVISION = "main"
+
+
+def resolved_model_revision(tok, model) -> str | None:
+    """Best-effort HuggingFace commit hash captured after loading."""
+    for obj in (model, tok):
+        config = getattr(obj, "config", None)
+        commit = getattr(config, "_commit_hash", None)
+        if commit:
+            return str(commit)
+        init_kwargs = getattr(obj, "init_kwargs", None)
+        if isinstance(init_kwargs, dict) and init_kwargs.get("_commit_hash"):
+            return str(init_kwargs["_commit_hash"])
+    return None
 
 
 def build_prompts(ring_labels):
@@ -85,12 +99,14 @@ def diagnostic(logits, ids_ring, labels, n, permute=None, mode="batch_mean"):
         raise ValueError(mode)
 
 
-def run_one(model_short, n_perms, seed, device):
+def run_one(model_short, n_perms, seed, device, model_revision):
     model_name = f"EleutherAI/{model_short}"
-    print(f"\n=== {model_name} ===")
+    print(f"\n=== {model_name} @ {model_revision} ===")
     t0 = time.time()
-    tok = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name, dtype=torch.float16).to(device).eval()
+    tok = AutoTokenizer.from_pretrained(model_name, revision=model_revision)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name, revision=model_revision, dtype=torch.float16
+    ).to(device).eval()
     load_time = time.time() - t0
     vram = torch.cuda.memory_allocated() / 1e9
 
@@ -135,6 +151,8 @@ def run_one(model_short, n_perms, seed, device):
 
     result = {
         "model": model_name,
+        "model_revision_requested": model_revision,
+        "model_revision_resolved": resolved_model_revision(tok, model),
         "load_time_s": round(load_time, 2),
         "fwd_time_s": round(fwd_time, 2),
         "vram_gb": round(vram, 3),
@@ -176,16 +194,19 @@ def main():
     ap.add_argument("--sizes", nargs="+", default=PYTHIA_SIZES)
     ap.add_argument("--n-perms", type=int, default=50)
     ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--out", default="pythia_rho_x_sweep/results_n_axis.json")
+    ap.add_argument("--model-revision", default=DEFAULT_MODEL_REVISION)
+    ap.add_argument("--out", default="empirical/pythia_rho_x_sweep/results_n_axis.json")
     args = ap.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Sweep on {device}; sizes={args.sizes}")
     results = []
+    out_path = Path(args.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     for s in args.sizes:
-        r = run_one(s, args.n_perms, args.seed, device)
+        r = run_one(s, args.n_perms, args.seed, device, args.model_revision)
         results.append(r)
-        Path(args.out).write_text(json.dumps(results, indent=2))
+        out_path.write_text(json.dumps(results, indent=2))
 
     print(f"\nResults saved to {args.out}")
     print("\nSummary:")

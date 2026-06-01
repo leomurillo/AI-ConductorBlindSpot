@@ -27,8 +27,8 @@ For each n in {12, 30, 6} (run order: highest insight first; see paper 34 sec
         (legs in three distinct conductors) are marked with a black edge.
       Three assertions are made and the script exits on violation:
         (a) max |g_{p_*}(chi_k, chi_l)|, k != l, is exactly 0;
-        (b) the total cross-packet triple count matches INSERT_16's
-            archived numbers (18 for n=6, 108 for n=12, 774 for n=30);
+        (b) the total cross-packet triple count matches the Section 4
+            exact-certificate ladder (18 for n=6, 108 for n=12, 774 for n=30);
         (c) the cubic Gram in the character basis at p_* is real-integer.
 
 (2) Layer 2 -- compute the cross-packet cubic-mass diagnostic rho_x
@@ -109,13 +109,13 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 REPORTS_DIR = REPO_ROOT / "empirical" / "reports"
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
-# Archived cross-packet cubic triple counts from INSERT_16 (paper 34 sec 4).
+# Archived cross-packet cubic triple counts from the Section 4 exact certificate.
 # These are the assert targets for the Layer-1 verification gate.
 INSERT16_CROSS_PACKET_COUNTS = {6: 18, 8: 42, 12: 108, 18: 252, 30: 774}
 
 
 # ---------------------------------------------------------------------------
-# 1. Conductor / character utilities (re-derived; mirrors INSERT_16).
+# 1. Conductor / character utilities (re-derived; mirrors the Section 4 certificate).
 # ---------------------------------------------------------------------------
 
 
@@ -137,7 +137,7 @@ def cubic_triples(n: int) -> List[Tuple[Tuple[int, int, int], bool]]:
     """All (k,l,m) in (1..n-1)^3 with k+l+m == 0 (mod n).
     Returns list of ((k,l,m), cross_packet) where cross_packet is True iff
     the three legs do NOT all lie in the same conductor packet (matches
-    INSERT_16's criterion -- a block-diagonal-by-packet quadratic form
+    the Section 4 certificate's criterion -- a block-diagonal-by-packet quadratic form
     cannot carry coupling (d, d, d') any more than (d1, d2, d3); both
     require cross-packet content). Paper 34 Lemma 3.3 / sec 4.
     """
@@ -211,7 +211,7 @@ def run_layer1(n: int) -> dict:
     G = fisher_gram_at_pstar(n)
     G_perm = G[np.ix_(perm, perm)]
 
-    # --- assertions (paper 34 sec 4 + INSERT_16) ---
+    # --- assertions (paper 34 sec 4 exact certificate) ---
     off_diag_max = np.max(np.abs(G - np.diag(np.diag(G))))
     assert off_diag_max < 1e-9, (
         f"Layer 1 violated: max off-diagonal Fisher entry = {off_diag_max!r} "
@@ -226,7 +226,7 @@ def run_layer1(n: int) -> dict:
     if expected_cross is not None:
         assert n_cross == expected_cross, (
             f"Layer 1 violated: cross-packet triple count for n={n} is "
-            f"{n_cross}, expected {expected_cross} (INSERT_16 archived)."
+            f"{n_cross}, expected {expected_cross} (Section 4 exact certificate)."
         )
 
     # --- figure: Fisher heatmap + cubic scatter ---
@@ -841,7 +841,7 @@ def emit_summary(results: List[dict]) -> None:
         "",
         "## Layer 1 (certificate, exact at $p_\\ast$)",
         "",
-        "| $n$ | packets (conductor: #chars) | cross-packet cubic triples | INSERT_16 | total surviving (= $(n{-}1)(n{-}2)$) |",
+        "| $n$ | packets (conductor: #chars) | cross-packet cubic triples | exact ladder | total surviving (= $(n{-}1)(n{-}2)$) |",
         "|---|---|---:|---:|---:|",
     ]
     for r in results:
@@ -906,7 +906,7 @@ def emit_summary(results: List[dict]) -> None:
         "",
         "**Layer 1.** Fisher exactly diagonal at $p_\\ast$ (max off-diagonal abs",
         "$= 0$ up to float64 noise) and cross-packet cubic triple count matches",
-        "INSERT_16's archived numbers. See per-$n$ certificate JSON.",
+        "the Section 4 exact-certificate ladder. See per-$n$ certificate JSON.",
         "",
         "**Layer 2 D1-vs-D2 separation gate.** Time-mean $\\Delta_\\rho :=",
         "\\overline{\\rho_\\times^{D2}} - \\overline{\\rho_\\times^{D1}}$ positive,",
@@ -938,15 +938,22 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument(
         "--rings",
         type=str,
-        default="12,30,6",
-        help="comma-separated n values in run order",
+        default="6,8,12,18,30",
+        help="comma-separated n values in checked-artifact run order",
     )
     p.add_argument("--steps", type=int, default=20000)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument(
         "--include_strong",
         action="store_true",
-        help="Also run the D2-strong control (target = random function of (a,b))",
+        default=True,
+        help="Run the D2-strong control (default; target = random function of (a,b))",
+    )
+    p.add_argument(
+        "--skip_strong",
+        dest="include_strong",
+        action="store_false",
+        help="Skip the D2-strong control.",
     )
     return p.parse_args(argv)
 

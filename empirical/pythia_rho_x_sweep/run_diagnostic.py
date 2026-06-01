@@ -32,6 +32,20 @@ from rho_x import rho_x, packet_summary
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 N = 12
+DEFAULT_MODEL_REVISION = "main"
+
+
+def resolved_model_revision(tok, model) -> str | None:
+    """Best-effort HuggingFace commit hash captured after loading."""
+    for obj in (model, tok):
+        config = getattr(obj, "config", None)
+        commit = getattr(config, "_commit_hash", None)
+        if commit:
+            return str(commit)
+        init_kwargs = getattr(obj, "init_kwargs", None)
+        if isinstance(init_kwargs, dict) and init_kwargs.get("_commit_hash"):
+            return str(init_kwargs["_commit_hash"])
+    return None
 
 
 def build_prompts(ring_labels: list[str], context_lengths=(3, 5, 7, 9, 11)) -> list[tuple[str, int]]:
@@ -95,16 +109,20 @@ def main() -> None:
     ap.add_argument("--n-perms", type=int, default=30)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--dtype", choices=("fp32", "fp16"), default="fp16")
+    ap.add_argument("--model-revision", default=DEFAULT_MODEL_REVISION)
     args = ap.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     dtype = torch.float16 if args.dtype == "fp16" else torch.float32
 
-    print(f"=== {args.model}  (device={device}, dtype={args.dtype}) ===")
+    print(f"=== {args.model} @ {args.model_revision}  (device={device}, dtype={args.dtype}) ===")
     t0 = time.time()
-    tok = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(args.model, dtype=dtype).to(device).eval()
+    tok = AutoTokenizer.from_pretrained(args.model, revision=args.model_revision)
+    model = AutoModelForCausalLM.from_pretrained(
+        args.model, revision=args.model_revision, dtype=dtype
+    ).to(device).eval()
     print(f"loaded in {time.time() - t0:.1f}s  vram={torch.cuda.memory_allocated() / 1e9:.2f}GB")
+    print(f"resolved HF revision: {resolved_model_revision(tok, model) or 'unknown'}")
 
     ids_bare = [tok.encode(m, add_special_tokens=False)[0] for m in MONTHS]
     ids_space = [tok.encode(" " + m, add_special_tokens=False)[0] for m in MONTHS]

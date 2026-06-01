@@ -8,6 +8,7 @@ the pipeline end-to-end, not to test the certificate.
 """
 
 from __future__ import annotations
+import argparse
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -19,16 +20,39 @@ from rho_x import rho_x, packet_summary
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+DEFAULT_MODEL = "EleutherAI/pythia-70m"
+DEFAULT_MODEL_REVISION = "main"
+
+
+def resolved_model_revision(tok, model) -> str | None:
+    """Best-effort HuggingFace commit hash captured after loading."""
+    for obj in (model, tok):
+        config = getattr(obj, "config", None)
+        commit = getattr(config, "_commit_hash", None)
+        if commit:
+            return str(commit)
+        init_kwargs = getattr(obj, "init_kwargs", None)
+        if isinstance(init_kwargs, dict) and init_kwargs.get("_commit_hash"):
+            return str(init_kwargs["_commit_hash"])
+    return None
 
 
 def main() -> None:
-    model_name = "EleutherAI/pythia-70m"
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--model-revision", default=DEFAULT_MODEL_REVISION)
+    args = parser.parse_args()
+
+    model_name = args.model
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    print(f"Loading {model_name} on {device}...")
-    tok = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float32).to(device).eval()
+    print(f"Loading {model_name} @ {args.model_revision} on {device}...")
+    tok = AutoTokenizer.from_pretrained(model_name, revision=args.model_revision)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name, revision=args.model_revision, torch_dtype=torch.float32
+    ).to(device).eval()
     print(f"Vocab size: {tok.vocab_size}, model dtype: {next(model.parameters()).dtype}")
+    print(f"resolved HF revision: {resolved_model_revision(tok, model) or 'unknown'}")
 
     ids_bare = [tok.encode(m, add_special_tokens=False)[0] for m in MONTHS]
     ids_space = [tok.encode(" " + m, add_special_tokens=False)[0] for m in MONTHS]

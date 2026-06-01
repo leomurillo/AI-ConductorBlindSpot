@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "checked_as_of": "2026-05-22",
+  "verification_method": "Primary arXiv abstract pages are the canonical source; Perplexity was used only as second-opinion triage and was not treated as authoritative.",
+  "entries": [
+    {
+      "id": "1412.1193",
+      "primary_url": "https://arxiv.org/abs/1412.1193",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [24]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Martens, J. (2020). *New insights and perspectives on the natural gradient method.* Journal of Machine Learning Research, 21(146), 1–76. arXiv:1412.1193."
+    },
+    {
+      "id": "1412.6980",
+      "primary_url": "https://arxiv.org/abs/1412.6980",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [18]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Kingma, D. P., & Ba, J. (2015). *Adam: A method for stochastic optimization.* In *Proceedings of the 3rd International Conference on Learning Representations* (ICLR 2015). arXiv:1412.6980."
+    },
+    {
+      "id": "1503.05671",
+      "primary_url": "https://arxiv.org/abs/1503.05671",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [25]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Martens, J., & Grosse, R. (2015). *Optimizing neural networks with Kronecker-factored approximate curvature.* In *Proceedings of the 32nd International Conference on Machine Learning* (ICML 2015), PMLR 37, pp. 2408–2417. arXiv:1503.05671."
+    },
+    {
+      "id": "1711.02838",
+      "primary_url": "https://arxiv.org/abs/1711.02838",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [39]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Tripuraneni, N., Stern, M., Jin, C., Regier, J., & Jordan, M. I. (2018). *Stochastic cubic regularization for fast nonconvex optimization.* In *Advances in Neural Information Processing Systems 31* (NeurIPS 2018). arXiv:1711.02838."
+    },
+    {
+      "id": "1806.07572",
+      "primary_url": "https://arxiv.org/abs/1806.07572",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [15]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Jacot, A., Gabriel, F., & Hongler, C. (2018). *Neural tangent kernel: Convergence and generalization in neural networks.* In *Advances in Neural Information Processing Systems 31* (NeurIPS 2018), pp. 8571–8580. arXiv:1806.07572."
+    },
+    {
+      "id": "1905.12558",
+      "primary_url": "https://arxiv.org/abs/1905.12558",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [20]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Kunstner, F., Hennig, P., & Balles, L. (2019). *Limitations of the empirical Fisher approximation for natural gradient descent.* In *Advances in Neural Information Processing Systems 32* (NeurIPS 2019), pp. 4156–4167. arXiv:1905.12558."
+    },
+    {
+      "id": "2110.06296",
+      "primary_url": "https://arxiv.org/abs/2110.06296",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [12]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Entezari, R., Sedghi, H., Saukh, O., & Neyshabur, B. (2022). *The role of permutation invariance in linear mode connectivity of neural networks.* In *Proceedings of the 10th International Conference on Learning Representations* (ICLR 2022). arXiv:2110.06296."
+    },
+    {
+      "id": "2201.02177",
+      "primary_url": "https://arxiv.org/abs/2201.02177",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [29]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Power, A., Burda, Y., Edwards, H., Babuschkin, I., & Misra, V. (2022). *Grokking: Generalization beyond overfitting on small algorithmic datasets.* In *ICLR 2022 Workshop on Mathematical and Empirical Understanding of Foundation Models* (MATH-AI). arXiv:2201.02177."
+    },
+    {
+      "id": "2209.04836",
+      "primary_url": "https://arxiv.org/abs/2209.04836",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [1]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Ainsworth, S. K., Hayase, J., & Srinivasa, S. (2023). *Git Re-Basin: Merging models modulo permutation symmetries.* In *Proceedings of the 11th International Conference on Learning Representations* (ICLR 2023). arXiv:2209.04836."
+    },
+    {
+      "id": "2210.01117",
+      "primary_url": "https://arxiv.org/abs/2210.01117",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [21]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Liu, Z., Michaud, E. J., & Tegmark, M. (2023). *Omnigrok: Grokking beyond algorithmic data.* In *Proceedings of the 11th International Conference on Learning Representations* (ICLR 2023). arXiv:2210.01117."
+    },
+    {
+      "id": "2301.05217",
+      "primary_url": "https://arxiv.org/abs/2301.05217",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [27]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Nanda, N., Chan, L., Lieberum, T., Smith, J., & Steinhardt, J. (2023). *Progress measures for grokking via mechanistic interpretability.* In *Proceedings of the 11th International Conference on Learning Representations* (ICLR 2023). arXiv:2301.05217."
+    },
+    {
+      "id": "2304.01373",
+      "primary_url": "https://arxiv.org/abs/2304.01373",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [8]",
+        "ConductorBlindSpot.md Section 6.6"
+      ],
+      "claims_verified": [
+        "arXiv page identifies Pythia as a checkpoint suite for analyzing language models across training and scaling",
+        "manuscript Pythia diagnostic relies on public Pythia checkpoints"
+      ],
+      "reference_text": "Biderman, S., Schoelkopf, H., Anthony, Q., Bradley, H., O'Brien, K., Hallahan, E., Khan, M. A., Purohit, S., Prashanth, U. S., Raff, E., Skowron, A., Sutawika, L., & van der Wal, O. (2023). *Pythia: A suite for analyzing large language models across training and scaling.* In *Proceedings of the 40th International Conference on Machine Learning* (ICML 2023), PMLR 202:2397–2430. arXiv:2304.01373."
+    },
+    {
+      "id": "2309.16042",
+      "primary_url": "https://arxiv.org/abs/2309.16042",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [43]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Zhang, F., & Nanda, N. (2023). *Towards best practices of activation patching in language models: Metrics and methods.* arXiv preprint arXiv:2309.16042."
+    },
+    {
+      "id": "2310.13121",
+      "primary_url": "https://arxiv.org/abs/2310.13121",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [30]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Quirke, P., & Barez, F. (2024). *Understanding addition in transformers.* arXiv preprint arXiv:2310.13121."
+    },
+    {
+      "id": "2312.06581",
+      "primary_url": "https://arxiv.org/abs/2312.06581",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [35]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Stander, D., Yu, Q., Fan, H., & Biderman, S. (2024). *Grokking group multiplication with cosets.* In *Proceedings of the 41st International Conference on Machine Learning* (ICML 2024). arXiv:2312.06581."
+    },
+    {
+      "id": "2402.09469",
+      "primary_url": "https://arxiv.org/abs/2402.09469",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [13]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Gu, J., Li, C., Liang, Y., Shi, Z., Song, Z., & Zhou, T. (2024). *Fourier circuits in neural networks: Unlocking the potential of large language models in mathematical reasoning and modular arithmetic.* arXiv preprint arXiv:2402.09469 (subsequently AISTATS 2025)."
+    },
+    {
+      "id": "2403.00745",
+      "primary_url": "https://arxiv.org/abs/2403.00745",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [19]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Kramár, J., Lieberum, T., Shah, R., & Nanda, N. (2024). *AtP\\*: An efficient and scalable method for localizing LLM behaviour to components.* arXiv preprint arXiv:2403.00745."
+    },
+    {
+      "id": "2406.16778",
+      "primary_url": "https://arxiv.org/abs/2406.16778",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [7]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Bhaskar, A., Wettig, A., Friedman, D., & Chen, D. (2024). *Finding transformer circuits with edge pruning.* arXiv preprint arXiv:2406.16778."
+    },
+    {
+      "id": "2407.02646",
+      "primary_url": "https://arxiv.org/abs/2407.02646",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [32]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Rai, D., Zhou, Y., Feng, S., Saparov, A., & Yao, Z. (2024). *A practical review of mechanistic interpretability for transformer-based language models.* arXiv preprint arXiv:2407.02646."
+    },
+    {
+      "id": "2407.20199",
+      "primary_url": "https://arxiv.org/abs/2407.20199",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [22]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Mallinar, N., Beaglehole, D., Zhu, L., Radhakrishnan, A., Pandit, P., & Belkin, M. (2025). *Emergence in non-neural models: Grokking modular arithmetic via average gradient outer product.* In *Proceedings of the 42nd International Conference on Machine Learning* (ICML 2025), spotlight. arXiv:2407.20199."
+    },
+    {
+      "id": "2505.24731",
+      "primary_url": "https://arxiv.org/abs/2505.24731",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [36]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Sun, A. (2025). *Circuit stability characterizes language model generalization.* arXiv preprint arXiv:2505.24731."
+    },
+    {
+      "id": "2508.21258",
+      "primary_url": "https://arxiv.org/abs/2508.21258",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [33]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Rezaei Jafari, F., Eberle, O., Khakzar, A., & Nanda, N. (2025). *RelP: Faithful and efficient circuit discovery via relevance patching.* arXiv preprint arXiv:2508.21258."
+    },
+    {
+      "id": "2510.04930",
+      "primary_url": "https://arxiv.org/abs/2510.04930",
+      "source_status": "peer_reviewed",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [34]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Saheb Pasand, A., & Dohmatob, E. (2026). *Egalitarian gradient descent: A simple approach to accelerated grokking.* In *Proceedings of the 14th International Conference on Learning Representations* (ICLR 2026). arXiv:2510.04930."
+    },
+    {
+      "id": "2601.03162",
+      "primary_url": "https://arxiv.org/abs/2601.03162",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [16]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Jiang, S., Voronin, A., Cyr, E., & Southworth, B. (2026). *On the convergence behavior of preconditioned gradient descent toward the rich learning regime.* arXiv preprint arXiv:2601.03162."
+    },
+    {
+      "id": "2603.05228",
+      "primary_url": "https://arxiv.org/abs/2603.05228",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [42]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Yıldırım, A. (2026). *The geometric inductive bias of grokking: Bypassing phase transitions via architectural topology.* arXiv preprint arXiv:2603.05228."
+    },
+    {
+      "id": "2603.25009",
+      "primary_url": "https://arxiv.org/abs/2603.25009",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [23]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Manir, S. B., & Rupa, A. P. (2026). *A systematic empirical study of grokking: Depth, architecture, activation, and regularization.* arXiv preprint arXiv:2603.25009."
+    },
+    {
+      "id": "2604.13123",
+      "primary_url": "https://arxiv.org/abs/2604.13123",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [40]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Truong, X. K., Truong, Q. H., Luu, D. T., & Phan, T. D. (2026a). *Spectral entropy collapse as a phase transition in delayed generalisation: An interventional and predictive framework for grokking.* arXiv preprint arXiv:2604.13123."
+    },
+    {
+      "id": "2605.07648",
+      "primary_url": "https://arxiv.org/abs/2605.07648",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [17]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Kikuchi, H., Masuya, R., Kawamoto, K., & Kera, H. (2026). *Learning large-scale modular addition with an auxiliary modulus.* arXiv preprint arXiv:2605.07648."
+    },
+    {
+      "id": "2605.09129",
+      "primary_url": "https://arxiv.org/abs/2605.09129",
+      "source_status": "under_review",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [31]",
+        "ConductorBlindSpot.md Section 1 contribution 6",
+        "ConductorBlindSpot.md Section 7.7 discussion",
+        "ConductorBlindSpot.md conclusion"
+      ],
+      "claims_verified": [
+        "arXiv page lists the paper comments as Under review",
+        "manuscript uses the reported 87% mixed-dataset circuit-discovery result only as motivating concordant evidence"
+      ],
+      "reference_text": "Rai, D., Geva, M., & Yao, Z. (2026). *Data-driven circuit discovery for interpretability of language models.* arXiv preprint arXiv:2605.09129 (listed by arXiv as under review). Code: https://github.com/Ziyu-Yao-NLP-Lab/data-driven-circuit-discovery."
+    },
+    {
+      "id": "2605.13612",
+      "primary_url": "https://arxiv.org/abs/2605.13612",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [11]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Dandi, Y., Vilucchio, M., Arnaboldi, L., Tabanelli, H., & Krzakala, F. (2026). *Deep learning as neural low-degree filtering: A spectral theory of hierarchical feature learning.* arXiv preprint arXiv:2605.13612."
+    },
+    {
+      "id": "2605.18845",
+      "primary_url": "https://arxiv.org/abs/2605.18845",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [41]"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference"
+      ],
+      "reference_text": "Truong, X. K., Truong, Q. H., Luu, D. T., & Phan, T. D. (2026b). *First-passage prediction of grokking delay: A calibrated law under AdamW with causal validation.* arXiv preprint arXiv:2605.18845."
+    },
+    {
+      "id": "2605.26379",
+      "primary_url": "https://arxiv.org/abs/2605.26379",
+      "source_status": "preprint",
+      "claim_locations": [
+        "ConductorBlindSpot.md reference [19]",
+        "ConductorBlindSpot.md Section 7.11"
+      ],
+      "claims_verified": [
+        "bibliographic metadata and source status recorded for manuscript reference",
+        "manuscript uses the Gaussian-uniqueness linear-identifiability result only as concordant structural context in Section 7.11"
+      ],
+      "reference_text": "Klindt, D., LeCun, Y., & Balestriero, R. (2026). *When does LeJEPA learn a world model?* arXiv preprint arXiv:2605.26379."
+    }
+  ]
+}

@@ -32,6 +32,20 @@ N = 12
 
 # Tokens per step in Pythia training run
 TOKENS_PER_STEP = 1024 * 2048
+DEFAULT_MODEL_REVISION_PREFIX = "step"
+
+
+def resolved_model_revision(tok, model) -> str | None:
+    """Best-effort HuggingFace commit hash captured after loading."""
+    for obj in (model, tok):
+        config = getattr(obj, "config", None)
+        commit = getattr(config, "_commit_hash", None)
+        if commit:
+            return str(commit)
+        init_kwargs = getattr(obj, "init_kwargs", None)
+        if isinstance(init_kwargs, dict) and init_kwargs.get("_commit_hash"):
+            return str(init_kwargs["_commit_hash"])
+    return None
 
 
 def build_prompts(ring_labels):
@@ -134,6 +148,8 @@ def run_one(model_name, revision, n_perms, seed, device, prompts, labels):
     result = {
         "model": model_name,
         "revision": revision,
+        "model_revision_requested": revision,
+        "model_revision_resolved": resolved_model_revision(tok, model),
         "step": step,
         "tokens": tokens,
         "load_time_s": round(load_time, 2),
@@ -177,7 +193,8 @@ def main():
                     default=[128, 1000, 3000, 10000, 30000, 70000, 143000])
     ap.add_argument("--n-perms", type=int, default=50)
     ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--out", default="pythia_rho_x_sweep/results_d_axis.json")
+    ap.add_argument("--model-revision-prefix", default=DEFAULT_MODEL_REVISION_PREFIX)
+    ap.add_argument("--out", default="empirical/pythia_rho_x_sweep/results_d_axis.json")
     args = ap.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -188,12 +205,14 @@ def main():
     print(f"Device: {device}")
 
     results = []
+    out_path = Path(args.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     for step in args.steps:
-        revision = f"step{step}"
+        revision = f"{args.model_revision_prefix}{step}"
         try:
             r = run_one(args.model, revision, args.n_perms, args.seed, device, prompts, labels)
             results.append(r)
-            Path(args.out).write_text(json.dumps(results, indent=2))
+            out_path.write_text(json.dumps(results, indent=2))
         except Exception as e:
             print(f"  FAILED for {revision}: {type(e).__name__}: {e}")
             continue

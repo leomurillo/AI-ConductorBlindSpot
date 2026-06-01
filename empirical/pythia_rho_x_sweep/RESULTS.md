@@ -70,12 +70,16 @@ Captured in the paper as §6.6 and §9 (Diagnostic deployment scope).
 ## Reproduction
 
 ```
-.venv\Scripts\python.exe pythia_rho_x_sweep\sweep_n_axis.py
-.venv\Scripts\python.exe pythia_rho_x_sweep\sweep_d_axis.py
+python empirical/pythia_rho_x_sweep/sweep_n_axis.py --out empirical/pythia_rho_x_sweep/results_n_axis.json
+python empirical/pythia_rho_x_sweep/sweep_d_axis.py --out empirical/pythia_rho_x_sweep/results_d_axis.json
 ```
 
 Total compute: ~25 min on RTX 3050 Laptop 4 GB.
 Cached models: ~12 GB on disk under ~/.cache/huggingface/hub.
 Raw JSON outputs:
-- pythia_rho_x_sweep/results_n_axis.json
-- pythia_rho_x_sweep/results_d_axis.json
+- empirical/pythia_rho_x_sweep/results_n_axis.json
+- empirical/pythia_rho_x_sweep/results_d_axis.json
+
+The checked JSON was produced before HuggingFace commit-hash capture was
+added. New runs write `model_revision_requested` and
+`model_revision_resolved` where `transformers` exposes a resolved commit.

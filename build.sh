@@ -33,7 +33,8 @@ command -v pandoc  >/dev/null || { echo "pandoc not found on PATH"  >&2; exit 1;
 command -v latexmk >/dev/null || { echo "latexmk not found on PATH" >&2; exit 1; }
 command -v xelatex >/dev/null || { echo "xelatex not found on PATH" >&2; exit 1; }
 
-[[ "$CLEAN" -eq 1 ]] && rm -rf "$BUILD_DIR"
+# Preserve build/utils (shared maintenance scripts); wipe the rest.
+[[ "$CLEAN" -eq 1 && -d "$BUILD_DIR" ]] && find "$BUILD_DIR" -mindepth 1 -maxdepth 1 ! -name utils -exec rm -rf {} + || true
 mkdir -p "$BUILD_DIR"
 
 # --- Parse title / author / date --------------------------------------------
@@ -95,10 +96,7 @@ pandoc "$PREPPED" \
     -V classoption=11pt \
     -V papersize=letter \
     -V geometry:margin=1in \
-    -V colorlinks=true \
-    -V mainfont="Latin Modern Roman" \
-    -V mathfont="Latin Modern Math" \
-    -V monofont="Latin Modern Mono"
+    -V colorlinks=true
 
 echo "Wrote TeX: $TEX"
 

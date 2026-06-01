@@ -23,7 +23,9 @@
       "perm_rho_x_mean": 0.9804,
       "perm_rho_x_std": 0.0012,
       "separation": 0.0003
-    }
+    },
+    "model_revision_requested": "step128",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -49,7 +51,9 @@
       "perm_rho_x_mean": 0.9782,
       "perm_rho_x_std": 0.0012,
       "separation": -0.0014
-    }
+    },
+    "model_revision_requested": "step1000",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -75,7 +79,9 @@
       "perm_rho_x_mean": 0.9795,
       "perm_rho_x_std": 0.0016,
       "separation": -0.0009
-    }
+    },
+    "model_revision_requested": "step3000",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -101,7 +107,9 @@
       "perm_rho_x_mean": 0.9796,
       "perm_rho_x_std": 0.0019,
       "separation": -0.0035
-    }
+    },
+    "model_revision_requested": "step10000",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -127,7 +135,9 @@
       "perm_rho_x_mean": 0.979,
       "perm_rho_x_std": 0.0022,
       "separation": -0.0006
-    }
+    },
+    "model_revision_requested": "step30000",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -153,7 +163,9 @@
       "perm_rho_x_mean": 0.979,
       "perm_rho_x_std": 0.0023,
       "separation": 0.0021
-    }
+    },
+    "model_revision_requested": "step70000",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -179,6 +191,8 @@
       "perm_rho_x_mean": 0.9774,
       "perm_rho_x_std": 0.0035,
       "separation": 0.0045
-    }
+    },
+    "model_revision_requested": "step143000",
+    "model_revision_resolved": null
   }
 ]

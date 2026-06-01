@@ -90,6 +90,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 REPORTS_DIR = REPO_ROOT / "empirical" / "reports"
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
+SUMMARY_TAG_TO_FORM = {
+    "adam_alpha0p1": "newton",
+    "adam_neumann_alpha0p1": "neumann",
+    "adam_within_packet_alpha0p1": "within_packet",
+}
+FORM_DESCRIPTIONS = {
+    "newton": "Form A: plain AdamW baseline plus cross-packet Newton-style T(u,u,.) cubic injection.",
+    "neumann": "Form B: plain AdamW baseline plus cross-packet Neumann-style T(h,u,.) cubic injection.",
+    "within_packet": "Form C: plain AdamW baseline plus within-packet projection/amplification control.",
+}
+
 
 # ---------------------------------------------------------------------------
 # 1. The cubic correction (cross-packet, character-basis).
@@ -628,11 +639,40 @@ def plot_layer3(n: int, result: dict):
     plt.close(fig)
 
 
-def emit_layer3_summary(results: List[dict], out_path: Path = None) -> None:
+def _mean(values: List[float]) -> float:
+    return float(sum(values) / len(values)) if values else float("nan")
+
+
+def _sample_std(values: List[float]) -> float:
+    if len(values) < 2:
+        return float("nan")
+    mu = _mean(values)
+    return float(math.sqrt(sum((x - mu) ** 2 for x in values) / (len(values) - 1)))
+
+
+def _format_std(values: List[float]) -> str:
+    return "n/a" if len(values) < 2 else f"{_sample_std(values):.3f}"
+
+
+def _summary_form(results: List[dict], tag: str = "") -> str:
+    for r in results:
+        if r.get("cubic_form"):
+            return str(r["cubic_form"])
+    return SUMMARY_TAG_TO_FORM.get(tag, "newton")
+
+
+def emit_layer3_summary(results: List[dict], out_path: Path = None, tag: str = "") -> None:
+    if not results:
+        raise ValueError("cannot emit an empty Layer 3 summary")
+    results = sorted(results, key=lambda r: (r["n"], r["seed"]))
+    form = _summary_form(results, tag)
+    deltas_t1 = [float(r["summary"]["delta_T1_ring"]) for r in results]
+    deltas_t2 = [float(r["summary"]["delta_T2_strong"]) for r in results]
+    interactions = [float(r["summary"]["interaction"]) for r in results]
     md = [
         "# Paper 34 -- Layer 3 (Section 8) Cubic-Aware Experiment Summary",
         "",
-        "Head-only exact-Fisher variant: A1 = head NG, A2 = head NG + cross-packet cubic injection.",
+        FORM_DESCRIPTIONS.get(form, f"Cubic form: {form}."),
         "T1 = (a+b) mod n; T2-strong = random function f(a,b).",
         "",
         "## Per-run summary",
@@ -656,7 +696,16 @@ def emit_layer3_summary(results: List[dict], out_path: Path = None) -> None:
         )
     md += [
         "",
-        "## Pre-registered branches",
+        "## Aggregate summary",
+        "",
+        "| statistic | runs | $\\Delta_{T1}$ | $\\Delta_{T2s}$ | **interaction** |",
+        "|---|---:|---:|---:|---:|",
+        f"| mean | {len(results)} | {_mean(deltas_t1):+.3f} | {_mean(deltas_t2):+.3f} | **{_mean(interactions):+.3f}** |",
+        f"| std | {len(results)} | {_format_std(deltas_t1)} | {_format_std(deltas_t2)} | {_format_std(interactions)} |",
+    ]
+    md += [
+        "",
+        "## Pre-specified branches",
         "",
         "**Branch A (Conjecture 5.8 confirmed on tested instance):** ",
         "interaction > 0, with $\\Delta_{T1} > 0$ and $\\Delta_{T2s} \\approx 0$ within noise.",
@@ -670,6 +719,22 @@ def emit_layer3_summary(results: List[dict], out_path: Path = None) -> None:
     ]
     target = out_path if out_path is not None else REPORTS_DIR / "paper34_layer3_summary.md"
     target.write_text("\n".join(md), encoding="utf-8")
+
+
+def load_layer3_results(ns: List[int], seeds: List[int], tag_suffix: str) -> List[dict]:
+    results: List[dict] = []
+    missing: List[Path] = []
+    for n in ns:
+        for seed in seeds:
+            path = REPORTS_DIR / f"paper34_layer3_n{n}_seed{seed}{tag_suffix}.json"
+            if not path.exists():
+                missing.append(path)
+                continue
+            results.append(json.loads(path.read_text(encoding="utf-8")))
+    if missing:
+        missing_list = "\n".join(str(path) for path in missing)
+        raise FileNotFoundError(f"missing Layer 3 source JSON files:\n{missing_list}")
+    return results
 
 
 def parse_args(argv: List[str]) -> argparse.Namespace:
@@ -723,6 +788,11 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
         default="",
         help="optional tag appended to output filenames to keep runs separate",
     )
+    p.add_argument(
+        "--summarize_only",
+        action="store_true",
+        help="regenerate the summary Markdown from existing JSON artifacts without training",
+    )
     return p.parse_args(argv)
 
 
@@ -731,6 +801,13 @@ def main(argv: List[str] = None) -> int:
     ns = [int(x) for x in args.rings.split(",")]
     seeds = [int(x) for x in args.seeds.split(",")]
     tag_suffix = f"_{args.tag}" if args.tag else ""
+    if args.summarize_only:
+        all_results = load_layer3_results(ns, seeds, tag_suffix)
+        summary_path = REPORTS_DIR / f"paper34_layer3_summary{tag_suffix}.md"
+        emit_layer3_summary(all_results, out_path=summary_path, tag=args.tag)
+        print(f"\n[done] summary regenerated at {summary_path}")
+        return 0
+
     all_results: List[dict] = []
     for n in ns:
         for seed in seeds:
@@ -749,7 +826,7 @@ def main(argv: List[str] = None) -> int:
                 json.dumps(r, indent=2)
             )
     summary_path = REPORTS_DIR / f"paper34_layer3_summary{tag_suffix}.md"
-    emit_layer3_summary(all_results, out_path=summary_path)
+    emit_layer3_summary(all_results, out_path=summary_path, tag=args.tag)
     print(f"\n[done] artifacts in {REPORTS_DIR}")
     return 0
 

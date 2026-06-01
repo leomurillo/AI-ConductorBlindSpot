@@ -11,6 +11,7 @@ position. The diagnostic needs all n labels to share one clean position.
 """
 
 from __future__ import annotations
+import argparse
 from transformers import AutoTokenizer
 
 
@@ -23,6 +24,8 @@ MONTHS_LONG = ["January", "February", "March", "April", "May", "June",
                "July", "August", "September", "October", "November", "December"]
 DIGITS = [str(i) for i in range(10)]
 HOURS_24 = [f"{i:02d}" for i in range(24)]
+DEFAULT_MODEL = "EleutherAI/pythia-70m"
+DEFAULT_MODEL_REVISION = "main"
 
 
 def probe_ring(tok, labels: list[str], name: str) -> dict:
@@ -43,8 +46,14 @@ def probe_ring(tok, labels: list[str], name: str) -> dict:
 
 def main() -> None:
     print("Loading Pythia tokenizer...")
-    tok = AutoTokenizer.from_pretrained("EleutherAI/pythia-70m")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--model-revision", default=DEFAULT_MODEL_REVISION)
+    args = parser.parse_args()
+
+    tok = AutoTokenizer.from_pretrained(args.model, revision=args.model_revision)
     print(f"Vocab size: {tok.vocab_size}")
+    print(f"model revision: {args.model_revision}")
     print()
 
     rings = [

@@ -4,7 +4,7 @@ Layers 1 + 2 only (no cubic-aware optimizer correction; section-9 firewall intac
 
 ## Layer 1 (certificate, exact at $p_\ast$)
 
-| $n$ | packets (conductor: #chars) | cross-packet cubic triples | INSERT_16 | total surviving (= $(n{-}1)(n{-}2)$) |
+| $n$ | packets (conductor: #chars) | cross-packet cubic triples | exact ladder | total surviving (= $(n{-}1)(n{-}2)$) |
 |---|---|---:|---:|---:|
 | 6 | 2: 1, 3: 2, 6: 2 | 18 | 18 | 20 |
 | 8 | 2: 1, 4: 2, 8: 4 | 42 | 42 | 42 |
@@ -52,7 +52,7 @@ mass *within* a single conductor packet, reducing its cross-packet share.
 
 **Layer 1.** Fisher exactly diagonal at $p_\ast$ (max off-diagonal abs
 $= 0$ up to float64 noise) and cross-packet cubic triple count matches
-INSERT_16's archived numbers. See per-$n$ certificate JSON.
+the Section 4 exact-certificate ladder. See per-$n$ certificate JSON.
 
 **Layer 2 D1-vs-D2 separation gate.** Time-mean $\Delta_\rho :=
 \overline{\rho_\times^{D2}} - \overline{\rho_\times^{D1}}$ positive,

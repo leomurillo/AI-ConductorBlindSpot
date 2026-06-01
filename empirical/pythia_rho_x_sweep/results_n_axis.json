@@ -20,7 +20,9 @@
       "perm_rho_x_mean": 0.9793,
       "perm_rho_x_std": 0.0013,
       "separation": 0.0
-    }
+    },
+    "model_revision_requested": "legacy-unpinned-run-before-commit-capture",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-160m",
@@ -43,7 +45,9 @@
       "perm_rho_x_mean": 0.9795,
       "perm_rho_x_std": 0.0015,
       "separation": 0.0014
-    }
+    },
+    "model_revision_requested": "legacy-unpinned-run-before-commit-capture",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-410m",
@@ -66,7 +70,9 @@
       "perm_rho_x_mean": 0.9747,
       "perm_rho_x_std": 0.005,
       "separation": 0.0146
-    }
+    },
+    "model_revision_requested": "legacy-unpinned-run-before-commit-capture",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1b",
@@ -89,7 +95,9 @@
       "perm_rho_x_mean": 0.9774,
       "perm_rho_x_std": 0.0035,
       "separation": 0.0045
-    }
+    },
+    "model_revision_requested": "legacy-unpinned-run-before-commit-capture",
+    "model_revision_resolved": null
   },
   {
     "model": "EleutherAI/pythia-1.4b",
@@ -112,6 +120,8 @@
       "perm_rho_x_mean": 0.9771,
       "perm_rho_x_std": 0.0033,
       "separation": 0.0038
-    }
+    },
+    "model_revision_requested": "legacy-unpinned-run-before-commit-capture",
+    "model_revision_resolved": null
   }
 ]

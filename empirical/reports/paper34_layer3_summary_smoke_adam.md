@@ -1,6 +1,6 @@
 # Paper 34 -- Layer 3 (Section 8) Cubic-Aware Experiment Summary
 
-Head-only exact-Fisher variant: A1 = head NG, A2 = head NG + cross-packet cubic injection.
+Form A: plain AdamW baseline plus cross-packet Newton-style T(u,u,.) cubic injection.
 T1 = (a+b) mod n; T2-strong = random function f(a,b).
 
 ## Per-run summary
@@ -9,7 +9,14 @@ T1 = (a+b) mod n; T2-strong = random function f(a,b).
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 30 | 0 | 0.1 | 0.002 | 0.002 | +0.000 | 0.038 | 0.038 | +0.001 | **-0.001** |
 
-## Pre-registered branches
+## Aggregate summary
+
+| statistic | runs | $\Delta_{T1}$ | $\Delta_{T2s}$ | **interaction** |
+|---|---:|---:|---:|---:|
+| mean | 1 | +0.000 | +0.001 | **-0.001** |
+| std | 1 | n/a | n/a | n/a |
+
+## Pre-specified branches
 
 **Branch A (Conjecture 5.8 confirmed on tested instance):** 
 interaction > 0, with $\Delta_{T1} > 0$ and $\Delta_{T2s} \approx 0$ within noise.

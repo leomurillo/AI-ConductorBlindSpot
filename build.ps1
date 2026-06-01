@@ -44,7 +44,11 @@ if (-not (Test-Path $preamble)) { throw "Preamble not found: $preamble" }
 $pdfName  = [System.IO.Path]::ChangeExtension($Source, '.pdf')
 $finalPdf = Join-Path $root $pdfName
 
-if ($Clean -and (Test-Path $buildDir)) { Remove-Item $buildDir -Recurse -Force }
+if ($Clean -and (Test-Path $buildDir)) {
+    # Preserve build/utils (shared maintenance scripts); wipe the rest.
+    Get-ChildItem -LiteralPath $buildDir -Force |
+        Where-Object { $_.Name -ne 'utils' } | Remove-Item -Recurse -Force
+}
 New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
 
 # --- Locate tools ------------------------------------------------------------
@@ -167,10 +171,7 @@ $pandocArgs = @(
     '-V', 'classoption=11pt',
     '-V', 'papersize=letter',
     '-V', 'geometry:margin=1in',
-    '-V', 'colorlinks=true',
-    '-V', 'mainfont=Latin Modern Roman',
-    '-V', 'mathfont=Latin Modern Math',
-    '-V', 'monofont=Latin Modern Mono'
+    '-V', 'colorlinks=true'
 )
 
 Write-Host 'Running pandoc...'
