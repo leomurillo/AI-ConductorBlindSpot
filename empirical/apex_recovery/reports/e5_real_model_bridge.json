@@ -1,0 +1,102 @@
+{
+  "experiment": "E5_real_model_bridge",
+  "model": "EleutherAI/pythia-70m",
+  "d": 512,
+  "n_layer": 6,
+  "n_tokens": 30000,
+  "n_pairs": 29882,
+  "depth_profile": {
+    "1": {
+      "spearman": -0.023120014648493382,
+      "floor": 0.17986009148487422,
+      "gauss_nu": 0.047555671951743705,
+      "skew_nu": 0.2382651339386433,
+      "n_dirs": 512
+    },
+    "2": {
+      "spearman": -0.02547813240292512,
+      "floor": 0.026227641909847586,
+      "gauss_nu": 0.0517114330811506,
+      "skew_nu": 0.03509792874925999,
+      "n_dirs": 512
+    },
+    "3": {
+      "spearman": 0.26157985574667264,
+      "floor": 0.009390369046124667,
+      "gauss_nu": 0.0033507418053977354,
+      "skew_nu": 0.09497247851127222,
+      "n_dirs": 512
+    },
+    "4": {
+      "spearman": 0.41294177939140086,
+      "floor": 0.012124975866761947,
+      "gauss_nu": 0.03307826090882753,
+      "skew_nu": 0.5111807862332092,
+      "n_dirs": 512
+    },
+    "5": {
+      "spearman": 0.20069106484819352,
+      "floor": 0.011728863927798124,
+      "gauss_nu": 0.01344611966801193,
+      "skew_nu": 0.3997936448307587,
+      "n_dirs": 512
+    },
+    "6": {
+      "spearman": -0.015475242758723293,
+      "floor": 0.017537345897946238,
+      "gauss_nu": 0.007633695357685566,
+      "skew_nu": 0.07083455828875518,
+      "n_dirs": 512
+    }
+  },
+  "estimable_band": [
+    2,
+    6
+  ],
+  "peak_layer": 4,
+  "peak_spearman": 0.41294177939140086,
+  "peak_most_gaussian": {
+    "dir": 165,
+    "k3": -0.016772087663412094,
+    "nu_D": 0.03307826090882753
+  },
+  "peak_most_skewed": {
+    "dir": 23,
+    "k3": 11.787038803100586,
+    "nu_D": 0.5111807862332092
+  },
+  "peak_quintile_trend": [
+    {
+      "quintile": 1,
+      "mean_k3sq": 0.0016270271171678651,
+      "mean_nu": 0.021799565743202336,
+      "n": 103
+    },
+    {
+      "quintile": 2,
+      "mean_k3sq": 0.013866136898138726,
+      "mean_nu": 0.02949116635242169,
+      "n": 102
+    },
+    {
+      "quintile": 3,
+      "mean_k3sq": 0.04463103507090482,
+      "mean_nu": 0.03537598967516301,
+      "n": 102
+    },
+    {
+      "quintile": 4,
+      "mean_k3sq": 0.118926407584986,
+      "mean_nu": 0.04209972423401305,
+      "n": 102
+    },
+    {
+      "quintile": 5,
+      "mean_k3sq": 6.646672928940669,
+      "mean_nu": 0.09134762721747647,
+      "n": 103
+    }
+  ],
+  "figure": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e5_real_model_bridge.png",
+  "reading": "weak bridge (Gaussian dirs affine) holds at all estimable layers; strong cross-direction bridge is a middle-layer phenomenon, peaking mid-network and absent at embedding/earliest/final layers -- the two registers are distinct off-Gaussian and couple where the slow dynamics carry the non-Gaussian shape."
+}

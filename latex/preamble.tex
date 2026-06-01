@@ -29,6 +29,24 @@
 % Make long URLs breakable at hyphens (applied before hyperref loads).
 \PassOptionsToPackage{hyphens}{url}
 
+% ---- Hebrew letter support (for the simplicial-series labels ל0–ל7) --------
+% Latin Modern Roman lacks Hebrew glyphs; without this, xelatex emits
+% "missing character" warnings and leaves the slots blank. \heb{...} switches
+% to a system font with Hebrew coverage (Times New Roman, ships with Windows)
+% for the wrapped text only, and is declared *robust* so hyperref / titling do
+% not try to expand it during protected-edef of moving arguments. The accsupp
+% ActualText annotation makes the glyph ל extract as "L" for PDF-to-text and
+% screen readers while the rendered glyph stays ל. (Mirrors the simplicial build.)
+\usepackage{accsupp}
+\providecommand{\hebrewfont}{}
+\DeclareRobustCommand{\heb}[1]{%
+  \BeginAccSupp{ActualText=L}{\hebrewfont #1}\EndAccSupp{}%
+}
+\AtBeginDocument{%
+  \newfontfamily\HebrewSysFont{Times New Roman}[Scale=MatchLowercase]%
+  \renewcommand{\hebrewfont}{\HebrewSysFont}%
+}
+
 % ---- Section heading polish -------------------------------------------------
 \usepackage{titlesec}
 \titleformat{\section}
@@ -57,3 +75,27 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
+
+% --- Figure path resolution -------------------------------------------------
+% Figures live under the repo root (empirical/apex_recovery/reports/...), but
+% latexmk runs xelatex from build/. Search the parent (and a couple of fallbacks)
+% so root-relative \includegraphics paths resolve regardless of invocation.
+\usepackage{graphicx}
+\graphicspath{{../}{./}{../../}}
+
+% Encourage figures to share pages with text rather than floating to their own
+% near-empty page (the default \floatpagefraction is too strict for medium figures).
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.7}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+
+% (The \heb{ל} macro, \emergencystretch, and url-hyphenation are already defined
+% earlier in this shared preamble — used by both papers — so we do not redefine
+% them here; BeyondTheConductorBlindSpot.md uses \heb{ל} for the lamed series.)
+
+% Pull the title-page content up (smaller top margin) so the Keywords line that
+% currently spills to page 2 fits on page 1. Applied after pandoc's geometry.
+\geometry{top=0.8in}

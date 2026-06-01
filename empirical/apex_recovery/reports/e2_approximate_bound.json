@@ -1,0 +1,188 @@
+{
+  "experiment": "E2_approximate_bound",
+  "figure": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e2_bound_scatter.png",
+  "product_world": "gaussian x laplace",
+  "partA_gap": {
+    "gamma": 0.022431874294470466,
+    "retained_min": 0.9720865346296951,
+    "first_discarded": 0.9496546603352246,
+    "top2_equals_single_modes_leakage": 0.0
+  },
+  "partB_trials": [
+    {
+      "s": 0.0,
+      "skew": 0.0,
+      "delta": 0.0,
+      "eps": 0.0,
+      "error": 0.0,
+      "bound": 0.0,
+      "holds": true,
+      "theta2": 0.0
+    },
+    {
+      "s": 0.0,
+      "skew": 0.05,
+      "delta": 0.0,
+      "eps": 0.170008,
+      "error": 0.00774,
+      "bound": 0.028903,
+      "holds": true,
+      "theta2": 0.157728
+    },
+    {
+      "s": 0.0,
+      "skew": 0.15,
+      "delta": 0.0,
+      "eps": 0.735455,
+      "error": 0.119181,
+      "bound": 0.540895,
+      "holds": true,
+      "theta2": 0.361103
+    },
+    {
+      "s": 0.02,
+      "skew": 0.0,
+      "delta": 0.00088,
+      "eps": 0.028284,
+      "error": 0.040202,
+      "bound": 0.095074,
+      "holds": true,
+      "theta2": 0.04
+    },
+    {
+      "s": 0.02,
+      "skew": 0.05,
+      "delta": 0.00088,
+      "eps": 0.158731,
+      "error": 0.045689,
+      "bound": 0.192534,
+      "holds": true,
+      "theta2": 0.225431
+    },
+    {
+      "s": 0.02,
+      "skew": 0.15,
+      "delta": 0.00088,
+      "eps": 0.274615,
+      "error": 0.057331,
+      "bound": 0.30766,
+      "holds": true,
+      "theta2": 0.145744
+    },
+    {
+      "s": 0.05,
+      "skew": 0.0,
+      "delta": 0.002136,
+      "eps": 0.070711,
+      "error": 0.101282,
+      "bound": 0.257198,
+      "holds": true,
+      "theta2": 0.1
+    },
+    {
+      "s": 0.05,
+      "skew": 0.05,
+      "delta": 0.002136,
+      "eps": 0.113165,
+      "error": 0.102219,
+      "bound": 0.302061,
+      "holds": true,
+      "theta2": 0.143735
+    },
+    {
+      "s": 0.05,
+      "skew": 0.15,
+      "delta": 0.002136,
+      "eps": 0.270773,
+      "error": 0.114252,
+      "bound": 0.500144,
+      "holds": true,
+      "theta2": 0.191834
+    },
+    {
+      "s": 0.1,
+      "skew": 0.0,
+      "delta": 0.004079,
+      "eps": 0.141421,
+      "error": 0.205267,
+      "bound": 0.554197,
+      "holds": true,
+      "theta2": 0.2
+    },
+    {
+      "s": 0.1,
+      "skew": 0.05,
+      "delta": 0.004079,
+      "eps": 0.252472,
+      "error": 0.221529,
+      "bound": 0.731871,
+      "holds": true,
+      "theta2": 0.179505
+    },
+    {
+      "s": 0.1,
+      "skew": 0.15,
+      "delta": 0.004079,
+      "eps": 0.462818,
+      "error": 0.272072,
+      "bound": 1.136016,
+      "holds": true,
+      "theta2": 0.423978
+    },
+    {
+      "s": 0.2,
+      "skew": 0.0,
+      "delta": 0.007477,
+      "eps": 0.282843,
+      "error": 0.422291,
+      "bound": 1.208547,
+      "holds": true,
+      "theta2": 0.4
+    },
+    {
+      "s": 0.2,
+      "skew": 0.05,
+      "delta": 0.007477,
+      "eps": 0.3179,
+      "error": 0.442611,
+      "bound": 1.286855,
+      "holds": true,
+      "theta2": 0.134026
+    },
+    {
+      "s": 0.2,
+      "skew": 0.15,
+      "delta": 0.007477,
+      "eps": 0.700352,
+      "error": 0.565819,
+      "bound": 2.300828,
+      "holds": true,
+      "theta2": 0.256714
+    }
+  ],
+  "partB_failures": 0,
+  "partC_gap_scan": [
+    {
+      "pair": "gaussianxgaussian",
+      "gamma": 0.02243,
+      "error": 0.20527,
+      "bound": 0.36364,
+      "G_holds": true
+    },
+    {
+      "pair": "bimodalxbimodal",
+      "gamma": 0.00205,
+      "error": 0.20527,
+      "bound": 0.36364,
+      "G_holds": true
+    },
+    {
+      "pair": "gaussianxlaplace",
+      "gamma": -0.0107,
+      "error": 0.20527,
+      "bound": null,
+      "G_holds": false
+    }
+  ],
+  "bound": "min_U ||h - U Phi_1||^2 <= (eps + sqrt(2 delta / gamma))^2"
+}

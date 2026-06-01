@@ -1,0 +1,61 @@
+{
+  "experiment": "E1_eigenfunction_recovery",
+  "n_points": 601,
+  "half_width": 6.0,
+  "worlds": [
+    {
+      "world": "gaussian",
+      "lam_1": 0.999802,
+      "lam_2": 0.999606,
+      "gap_lam1_minus_lam2": 0.000195,
+      "phi1_monotone": true,
+      "phi1_nonlinearity_nu": 2.5e-05,
+      "score_nonlinearity": 0.0,
+      "linear_probe_R2": 0.999975
+    },
+    {
+      "world": "laplace",
+      "lam_1": 0.999917,
+      "lam_2": 0.999896,
+      "gap_lam1_minus_lam2": 2.1e-05,
+      "phi1_monotone": true,
+      "phi1_nonlinearity_nu": 0.130706,
+      "score_nonlinearity": 0.478958,
+      "linear_probe_R2": 0.869294
+    },
+    {
+      "world": "bimodal",
+      "lam_1": 0.999986,
+      "lam_2": 0.99983,
+      "gap_lam1_minus_lam2": 0.000156,
+      "phi1_monotone": true,
+      "phi1_nonlinearity_nu": 0.068232,
+      "score_nonlinearity": 0.782392,
+      "linear_probe_R2": 0.931768
+    },
+    {
+      "world": "uniform",
+      "lam_1": 0.999969,
+      "lam_2": 0.999877,
+      "gap_lam1_minus_lam2": 9.2e-05,
+      "phi1_monotone": true,
+      "phi1_nonlinearity_nu": 0.014465,
+      "score_nonlinearity": 0.0,
+      "linear_probe_R2": 0.985535
+    }
+  ],
+  "mixing_invariance_L2pi": {
+    "gaussian": 4.1228080165309303e-13,
+    "laplace": 6.173247707933337e-13,
+    "bimodal": 9.332369941442306e-13,
+    "uniform": 7.831918496242124e-13
+  },
+  "known_ground_truth_warp": {
+    "warp": "z = g^3,  ground-truth phi_1(z) = cbrt(z)",
+    "recovered_vs_truth_L2pi": 0.0025201147472370972,
+    "linear_probe_R2_on_z": 0.607651,
+    "phi1_affine_in_g_nu": 6.36e-06
+  },
+  "figure": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e1_eigenfunctions.png",
+  "takeaway": "phi_1 affine <=> Gaussian (LeJEPA); monotone-nonlinear otherwise (ours). Recovery is intrinsic to the transition operator."
+}

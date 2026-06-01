@@ -1,0 +1,10 @@
+{
+  "experiment": "E6_grokking_bridge",
+  "task": "modadd",
+  "p": 113,
+  "device": "cuda",
+  "grok_step": null,
+  "steps": 400,
+  "metrics_jsonl": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e6_modadd_p113_metrics.jsonl",
+  "prediction": "D (embedding Fourier concentration) and S (logit additivity) rise together at the grok and track val acc; both flat on the control"
+}
