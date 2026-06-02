@@ -57,9 +57,8 @@ def main():
     titles = ["validation accuracy", "D  -  embedding Fourier concentration",
               "S  -  logit additivity (R^2 by sum-class)"]
     if has_logit:
-        panels += ["rho_x_logit_total_mass", "rho_x_logit"]
-        titles += ["persistent logit-cubic MASS, offset profile  [log scale]",
-                   "logit-cubic cross-packet share  rho_x  (CBS Def 6.1)"]
+        panels += ["rho_x_logit_cross_mass"]
+        titles += ["cross-packet cubic mass, offset profile (CBS Def 6.1 / Conj 5.8)  [log scale]"]
     elif composite:
         panels.append("rho_x")
         titles.append("rho_x  -  cross-packet cubic mass (CBS Def 6.1)")
@@ -73,7 +72,7 @@ def main():
         if ctrl is not None:
             xc, yc = col(ctrl, key)
             ax.plot(xc, yc, color="0.55", lw=1.5, ls="--", label="control (random table)")
-        if key == "rho_x_logit_total_mass":
+        if key in ("rho_x_logit_total_mass", "rho_x_logit_cross_mass"):
             ax.set_yscale("log")
         if gs is not None:
             ax.axvline(gs, color="C0", lw=1, alpha=0.6)

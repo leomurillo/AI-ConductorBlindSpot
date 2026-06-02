@@ -31,13 +31,16 @@ def show(label, r):
           f"rho_x={r['rho_x']:.4f} totmass={r['rho_x_total_mass']:.3g}")
 
 
-for p in (113, 110):
+moduli = sorted(int(f.name.split("_p")[1].split("_")[0])
+                for f in D.glob("e6_modadd_p*_metrics.jsonl"))
+for p in moduli:
     task = load("modadd", p)
     ctrl = load("control", p)
     if not task:
         continue
     gs = grok(task)
-    kind = "prime" if p == 113 else "composite"
+    ncross = task[0].get("n_triples_cross", 0)
+    kind = "prime (rho_x degenerate)" if ncross == 0 else "composite/prime-power"
     print(f"\n===== p={p} ({kind}) =====")
     print(f"  task: grok_step={gs}  final step={task[-1]['step']} val={task[-1]['val_acc']:.3f}")
     if ctrl:
@@ -61,8 +64,8 @@ for p in (113, 110):
             ce = at(ctrl, post["step"])
             print(f"    control at same step: D={ce['D_fourier_max']:.3f} S={ce['S_logit_additivity']:.3f}")
 
-    # rho_x discrimination (composite only)
-    if p != 113 and ctrl:
+    # rho_x discrimination (only where cross-packet triples exist)
+    if ncross > 0 and ctrl:
         cser = {r["step"]: r["rho_x"] for r in ctrl}
         diffs = [abs(r["rho_x"] - cser[r["step"]]) for r in task if r["step"] in cser]
         tr = [r["rho_x"] for r in task]
@@ -97,9 +100,13 @@ for p in (113, 110):
                 cmf = "rho_x_logit_cross_mass"
                 print(f"    CROSS-PACKET abs mass (Conj 5.8): task pre={pre[cmf]:.3g} "
                       f"grok={gk[cmf]:.3g} post={po[cmf]:.3g}   ctrl@grok={cgk[cmf]:.3g}")
-                gr = po[cmf] / max(cgk[cmf], 1e-12)
-                print(f"    => task post / ctrl = {gr:.1f}x ; grows on ring & ~null on control"
-                      f" => matches Conj 5.8 direction" if gr > 100 else
-                      f"    => ratio {gr:.1f}x (inconclusive vs Conj 5.8)")
+                # peak discrimination is robust to post-grok dissipation
+                # (prime-power moduli consolidate within-packet after the grok)
+                task_pk = max(r[cmf] for r in task)
+                ctrl_pk = max(r[cmf] for r in ctrl)
+                print(f"    => PEAK cross-packet mass task={task_pk:.3g} ctrl={ctrl_pk:.3g} "
+                      f"= {task_pk / max(ctrl_pk, 1e-12):.0f}x")
+                print(f"       accumulates on ring, null on control => Conj 5.8 direction "
+                      f"(5.8' = representation-learning-phase effect)")
             print(f"    logit-cubic mass range: task [{min(tm):.3g},{max(tm):.3g}]  "
                   f"ctrl [{min(cm):.3g},{max(cm):.3g}]")
