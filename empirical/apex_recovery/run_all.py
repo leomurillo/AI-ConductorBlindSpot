@@ -3,10 +3,11 @@ run_all.py — reproduce every Apex-Matched Eigenfunction Recovery certificate.
 
     python empirical/apex_recovery/run_all.py        # (or: py ... for figures)
 
-Runs E1, E2, E3 in order, each self-contained, writing JSON (and PNG if
+Runs E1, E2, E3, E4, E7 in order, each self-contained, writing JSON (and PNG if
 matplotlib is available) into ./reports/. Total runtime a few seconds; no GPU,
 no network, deterministic. Exit code is nonzero if any experiment's built-in
-self-checks fail (E2's bound must hold in every trial; E3 is exact).
+self-checks fail (E2's bound must hold in every trial; E3 is exact; E7's chart
+agent is exact and its Theorem-4 regret bound holds).
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ SCRIPTS = [
     "e2_approximate_bound.py",
     "e3_hankel_reconstruction.py",
     "e4_cross_register_bridge.py",
+    "e7_planning_certificate.py",
 ]
 
 
@@ -56,6 +58,18 @@ def main() -> int:
         ok = False
     if max(abs(r["k3"]) for r in sy["rows"]) > 1e-10:
         print("FAIL: E4 symmetric family has nonzero skewness (should be exact 0)")
+        ok = False
+
+    e7 = json.loads((HERE / "reports" / "e7_planning_certificate.json").read_text())
+    if abs(e7["proposition1"]["cube"]["regret"]) > 1e-6:
+        print("FAIL: E7 chart agent not exact on the nonlinear warp (Prop 1)")
+        ok = False
+    lk = e7["linear_kicker"]
+    if not (abs(lk[0]["regret_lin"]) < 1e-6 and lk[-1]["regret_lin"] > 1e-2):
+        print("FAIL: E7 linear agent not exact-at-Gaussian / sub-optimal-off-Gaussian")
+        ok = False
+    if not (abs(e7["theorem4"][0]["regret"]) < 1e-6 and e7["C_fit"] < 1.0):
+        print("FAIL: E7 Theorem-4 bound (regret<=C*L*T*eta, vanishing at eta=0) not met")
         ok = False
 
     print("\n" + "=" * 78)
