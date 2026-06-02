@@ -26,8 +26,11 @@
 % Let LaTeX stretch lines a bit further when it can't find a clean break;
 % keeps overfull hboxes out of display math and URL-heavy lines.
 \setlength{\emergencystretch}{3em}
-% Make long URLs breakable at hyphens (applied before hyperref loads).
+% Make long URLs breakable at hyphens (applied before hyperref loads), and load
+% xurl so they also break at any character -- a single long no-hyphen URL (e.g.
+% the bare GitHub link) would otherwise run 40+pt into the margin.
 \PassOptionsToPackage{hyphens}{url}
+\usepackage{xurl}
 
 % ---- Hebrew letter support (for the simplicial-series labels ל0–ל7) --------
 % Latin Modern Roman lacks Hebrew glyphs; without this, xelatex emits
