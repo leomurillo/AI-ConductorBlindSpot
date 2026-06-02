@@ -184,6 +184,35 @@ def logit_additivity(L, a, b, n: int) -> float:
 
 
 # ---------------------------------------------------------------------------
+# Persistent logit-cubic input -- the offset profile on the ring.
+# ---------------------------------------------------------------------------
+
+
+def offset_profile(L, a, b, n: int):
+    """h[t] = mean over examples of the logit assigned to the class t *below* the
+    correct answer (a+b):  h[t] = mean_i L[i, (a_i + b_i - t) mod n].
+
+    h is the average logit as a function of ring offset-from-correct. It is
+    PEAKED at t=0 and carries the model's key ring frequencies once it
+    generalises; it is roughly FLAT for a structureless (memorising) model. Unlike
+    the centered score u, h does NOT vanish as the model groks -- it grows -- so
+    rho_x(h - mean h) is a persistent cross-packet cubic that stays well-posed
+    through and after the grok. (For a prime modulus rho_x is still 0 by
+    construction; the offset profile only rescues the COMPOSITE case.)
+    """
+    L = np.asarray(L, dtype=float)
+    a = np.asarray(a)
+    b = np.asarray(b)
+    N = L.shape[0]
+    correct = (a + b) % n
+    rows = np.arange(N)
+    h = np.empty(n)
+    for t in range(n):
+        h[t] = L[rows, (correct - t) % n].mean()
+    return h
+
+
+# ---------------------------------------------------------------------------
 # Self-test: arithmetic only, no torch, no GPU. Confirms the ring machinery
 # matches CBS, and that the register diagnostics behave at the two extremes.
 # ---------------------------------------------------------------------------
@@ -243,6 +272,24 @@ def _selftest():
     print(f"  lookup logits   R2_add={logit_additivity(L_lookup, a, b, 12):.3f}  (low)")
     print(f"  additive logits R2_add={logit_additivity(L_add, a, b, 12):.3f}  (~1)")
     assert logit_additivity(L_add, a, b, 12) > 0.95
+
+    print("\noffset-profile rho_x (persistent logit-cubic), n=12:")
+    # grokked-like logits built from key freqs spanning conductor packets:
+    # w=2 (cond 6), w=3 (cond 4), w=4 (cond 3). h[t] should be sum_w cos(2pi w t/12).
+    W = [2, 3, 4]
+    Lg = np.array([[sum(np.cos(2 * np.pi * w * ((av + bv - c) % 12) / 12) for w in W)
+                    for c in range(12)] for av, bv in zip(a, b)])
+    hg = offset_profile(Lg, a, b, 12)
+    hg_exp = np.array([sum(np.cos(2 * np.pi * w * t / 12) for w in W) for t in range(12)])
+    print(f"  offset profile == sum-of-cos(key freqs): {np.allclose(hg, hg_exp)}")
+    assert np.allclose(hg, hg_exp)
+    rg = r12(hg - hg.mean())
+    Lm = np.random.default_rng(1).standard_normal((144, 12))   # memorised-like = noise
+    hm = offset_profile(Lm, a, b, 12)
+    rm = r12(hm - hm.mean())
+    print(f"  grokked-like:   rho_x={rg['rho_x']:.4f}  total_mass={rg['total_mass']:.4f}  (persistent)")
+    print(f"  memorised-like: rho_x={rm['rho_x']:.4f}  total_mass={rm['total_mass']:.4g}  (flat -> tiny)")
+    assert rg["total_mass"] > 10 * rm["total_mass"], "offset-profile mass must separate structure from noise"
 
     print("\nALL SELF-TESTS PASSED.")
 

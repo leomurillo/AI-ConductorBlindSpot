@@ -77,6 +77,7 @@ from e6_diagnostics import (
     RhoX,
     embedding_fourier_concentration,
     logit_additivity,
+    offset_profile,
 )
 
 try:
@@ -230,25 +231,30 @@ def main():
             cF_max, cF_top5, shares = embedding_fourier_concentration(W, args.p)
             L, u = head_tensors(model, X, Y, args.p)
             r2_add = logit_additivity(L, a_np, b_np, args.p)
-            rx = rho(u)
+            rx = rho(u)                                  # score-cubic (vanishes at grok)
+            h = offset_profile(L, a_np, b_np, args.p)
+            rxl = rho(h - h.mean())                      # persistent logit-cubic
             row = dict(step=step, train_loss=round(loss.item(), 6),
                        train_acc=tr_acc, val_acc=va_acc,
                        D_fourier_max=cF_max, D_fourier_top5=cF_top5,
                        S_logit_additivity=r2_add,
                        rho_x=rx["rho_x"], rho_x_cross_mass=rx["cross_mass"],
                        rho_x_total_mass=rx["total_mass"],
+                       rho_x_logit=rxl["rho_x"], rho_x_logit_cross_mass=rxl["cross_mass"],
+                       rho_x_logit_total_mass=rxl["total_mass"],
                        n_triples_cross=rx["n_triples_cross"],
                        sec=round(time.time() - t0, 1),
                        # raw vectors for offline recompute / correction:
-                       u=_r(u), emb_shares=_r(shares))
+                       u=_r(u), emb_shares=_r(shares), h_offset=_r(h))
             log.write(json.dumps(row) + "\n")
             log.flush()
             newly = grok_step is None and va_acc > 0.9 and tr_acc > 0.9
             if newly:
                 grok_step = step
-            rxs = "  rho_x --" if rho.n_cross == 0 else f"  rho_x {rx['rho_x']:.3f}"
+            rxs = "" if rho.n_cross == 0 else \
+                f" | rhoxL {rxl['rho_x']:.3f} m {rxl['total_mass']:.2g}"
             print(f"  step {step:6d} | tr {tr_acc:.3f} va {va_acc:.3f} | "
-                  f"D {cF_max:.3f} | S {r2_add:.3f} |{rxs} | {row['sec']:.0f}s"
+                  f"D {cF_max:.3f} | S {r2_add:.3f}{rxs} | {row['sec']:.0f}s"
                   + ("  <== GROK" if newly else ""))
 
             if (grok_step is not None and args.stop_after_grok > 0
