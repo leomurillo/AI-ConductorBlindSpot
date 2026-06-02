@@ -93,5 +93,13 @@ for p in (113, 110):
                 print(f"    MASS  task/ctrl at post-grok = {ratio:.1f}x  (grow+separate => persistent signal)")
                 print(f"    RATIO (cross-packet share) task pre={pre['rho_x_logit']:.3f} "
                       f"grok={gk['rho_x_logit']:.3f} post={po['rho_x_logit']:.3f}  ctrl={cgk['rho_x_logit']:.3f}")
+                # the Conjecture-5.8 quantity is the ABSOLUTE cross-packet mass (= ratio x total)
+                cmf = "rho_x_logit_cross_mass"
+                print(f"    CROSS-PACKET abs mass (Conj 5.8): task pre={pre[cmf]:.3g} "
+                      f"grok={gk[cmf]:.3g} post={po[cmf]:.3g}   ctrl@grok={cgk[cmf]:.3g}")
+                gr = po[cmf] / max(cgk[cmf], 1e-12)
+                print(f"    => task post / ctrl = {gr:.1f}x ; grows on ring & ~null on control"
+                      f" => matches Conj 5.8 direction" if gr > 100 else
+                      f"    => ratio {gr:.1f}x (inconclusive vs Conj 5.8)")
             print(f"    logit-cubic mass range: task [{min(tm):.3g},{max(tm):.3g}]  "
                   f"ctrl [{min(cm):.3g},{max(cm):.3g}]")
