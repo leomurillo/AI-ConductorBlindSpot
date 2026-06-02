@@ -293,15 +293,17 @@ def main():
     (REPORTS / "e8_trained_encoder.json").write_text(json.dumps(out, indent=2))
     fig = make_figure(rowsA, z_by_world, phi_by_world)
 
-    # gate-style self-checks
-    gA = next(r for r in rowsA if r["world"] == "gaussian")
-    assert gA["corr"] > 0.95, "trained encoder must recover phi_1 on the Gaussian world"
-    assert gA["nu_trained"] < 0.05, "trained Gaussian chart must be affine (nu ~ 0)"
-    ng = [r for r in rowsA if r["world"] != "gaussian"]
-    assert all(r["corr"] > 0.9 for r in ng), "trained encoder must recover phi_1 on non-Gaussian worlds"
-    assert any(r["nu_trained"] > 0.05 for r in ng), "a non-Gaussian trained chart must be curved"
-    assert partB["procrustes_err"] < 0.25, "2-D trained encoder must recover the chart up to rotation"
-    print(f"\nPASS. wrote {REPORTS / 'e8_trained_encoder.json'}"
+    # gate-style self-checks (skipped in --quick smoke, which under-trains by design)
+    if not args.quick:
+        gA = next(r for r in rowsA if r["world"] == "gaussian")
+        assert gA["corr"] > 0.95, "trained encoder must recover phi_1 on the Gaussian world"
+        assert gA["nu_trained"] < 0.05, "trained Gaussian chart must be affine (nu ~ 0)"
+        ng = [r for r in rowsA if r["world"] != "gaussian"]
+        assert all(r["corr"] > 0.9 for r in ng), "trained encoder must recover phi_1 on non-Gaussian worlds"
+        assert any(r["nu_trained"] > 0.05 for r in ng), "a non-Gaussian trained chart must be curved"
+        assert partB["procrustes_err"] < 0.25, "2-D trained encoder must recover the chart up to rotation"
+    tag = "DONE (quick smoke; asserts skipped)" if args.quick else "PASS"
+    print(f"\n{tag}. wrote {REPORTS / 'e8_trained_encoder.json'}"
           + (f" and {fig}" if fig else " (figure skipped)"))
     return out
 
