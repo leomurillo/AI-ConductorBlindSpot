@@ -52,10 +52,15 @@ def main():
         raise SystemExit(f"no task metrics for p={args.p} in {REPORTS}")
 
     composite = any((r.get("n_triples_cross") or 0) > 0 for r in task)
+    has_logit = composite and ("rho_x_logit" in task[0])
     panels = ["val_acc", "D_fourier_max", "S_logit_additivity"]
     titles = ["validation accuracy", "D  -  embedding Fourier concentration",
               "S  -  logit additivity (R^2 by sum-class)"]
-    if composite:
+    if has_logit:
+        panels += ["rho_x_logit_total_mass", "rho_x_logit"]
+        titles += ["persistent logit-cubic MASS, offset profile  [log scale]",
+                   "logit-cubic cross-packet share  rho_x  (CBS Def 6.1)"]
+    elif composite:
         panels.append("rho_x")
         titles.append("rho_x  -  cross-packet cubic mass (CBS Def 6.1)")
 
@@ -68,6 +73,8 @@ def main():
         if ctrl is not None:
             xc, yc = col(ctrl, key)
             ax.plot(xc, yc, color="0.55", lw=1.5, ls="--", label="control (random table)")
+        if key == "rho_x_logit_total_mass":
+            ax.set_yscale("log")
         if gs is not None:
             ax.axvline(gs, color="C0", lw=1, alpha=0.6)
             ax.text(gs, ax.get_ylim()[1], "  grok", color="C0", va="top", fontsize=8)
