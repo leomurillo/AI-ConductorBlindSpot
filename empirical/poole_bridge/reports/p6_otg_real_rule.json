@@ -1,0 +1,217 @@
+{
+  "experiment": "P6_otg_real_rule",
+  "faithfulness": {
+    "vacuum_stays_empty": true,
+    "overpopulation_core_evaporates": true,
+    "effective_birth": [
+      5,
+      6
+    ],
+    "effective_survive": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "seven_ejected_from_birth": true,
+    "effective": {
+      "birth": [
+        5,
+        6
+      ],
+      "survive": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "phi_at_7": 7.35
+    },
+    "flux_probe": {
+      "L": 16,
+      "eq_density": 0.399658203125,
+      "change_fraction": 0.00322265625,
+      "his_Phi": 0.4002
+    }
+  },
+  "closure": [
+    {
+      "shape": [
+        2,
+        2,
+        2
+      ],
+      "n_states": 256,
+      "translation_equivariant_violations": 0,
+      "batch_vs_stepint": 0.0,
+      "sectors": [
+        {
+          "sector": "id",
+          "n_values": 256,
+          "closed": true,
+          "G_is_identity": false,
+          "induced_map_size": 256
+        },
+        {
+          "sector": "attractor_basin",
+          "n_values": 7,
+          "closed": true,
+          "G_is_identity": true,
+          "induced_map_size": 7
+        },
+        {
+          "sector": "translation_orbit",
+          "n_values": 46,
+          "closed": true,
+          "G_is_identity": false,
+          "induced_map_size": 46
+        },
+        {
+          "sector": "density",
+          "n_values": 9,
+          "closed": false,
+          "witness": [
+            3,
+            6
+          ],
+          "witness_render": [
+            "10/00 || 10/00",
+            "00/10 || 10/00"
+          ],
+          "witness_after": [
+            "01/10 || 01/10",
+            "00/00 || 00/00"
+          ],
+          "witness_valid": true
+        },
+        {
+          "sector": "single_cell_0",
+          "n_values": 2,
+          "closed": false,
+          "witness": [
+            0,
+            10
+          ],
+          "witness_render": [
+            "00/00 || 00/00",
+            "00/00 || 10/10"
+          ],
+          "witness_after": [
+            "00/00 || 00/00",
+            "10/10 || 01/01"
+          ],
+          "witness_valid": true
+        }
+      ]
+    },
+    {
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "n_states": 65536,
+      "translation_equivariant_violations": 0,
+      "batch_vs_stepint": 0.0,
+      "sectors": [
+        {
+          "sector": "id",
+          "n_values": 65536,
+          "closed": true,
+          "G_is_identity": false,
+          "induced_map_size": 65536
+        },
+        {
+          "sector": "attractor_basin",
+          "n_values": 495,
+          "closed": true,
+          "G_is_identity": true,
+          "induced_map_size": 495
+        },
+        {
+          "sector": "translation_orbit",
+          "n_values": 4216,
+          "closed": true,
+          "G_is_identity": false,
+          "induced_map_size": 4216
+        },
+        {
+          "sector": "density",
+          "n_values": 17,
+          "closed": false,
+          "witness": [
+            3,
+            6
+          ],
+          "witness_render": [
+            "1000/0000 || 1000/0000",
+            "0000/1000 || 1000/0000"
+          ],
+          "witness_after": [
+            "0000/1101 || 0000/1101",
+            "0000/0101 || 0101/0000"
+          ],
+          "witness_valid": true
+        },
+        {
+          "sector": "single_cell_0",
+          "n_values": 2,
+          "closed": false,
+          "witness": [
+            0,
+            10
+          ],
+          "witness_render": [
+            "0000/0000 || 0000/0000",
+            "0000/0000 || 1000/1000"
+          ],
+          "witness_after": [
+            "0000/0000 || 0000/0000",
+            "1101/1101 || 0000/0000"
+          ],
+          "witness_valid": true
+        }
+      ]
+    }
+  ],
+  "current_audit": {
+    "shape": [
+      4,
+      2,
+      2
+    ],
+    "labels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "pi_min": 0.0011764705882352934,
+    "adjoint_resid": 1.3322676295501878e-15,
+    "S_selfadjoint_resid": 4.440892098500626e-16,
+    "A_skew_resid": 6.938893903907228e-18,
+    "J_antisym_resid": 0.0,
+    "J_div_resid": 4.0549161250957866e-17,
+    "normA": 0.7620387635336006,
+    "detailed_balance": false,
+    "S_reversal_diff": 4.281143581869922e-17,
+    "J_reversal_diff": 0.01981361088566111,
+    "arrow_cycle_rank_b1": 114
+  },
+  "passed": true
+}

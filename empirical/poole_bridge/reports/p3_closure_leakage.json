@@ -1,0 +1,250 @@
+{
+  "experiment": "P3_closure_leakage",
+  "instances": [
+    {
+      "shape": [
+        3,
+        3,
+        1
+      ],
+      "n_cells": 9,
+      "n_states": 512,
+      "birth": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "resonance": "input_shift",
+      "sectors": [
+        {
+          "sector": "id",
+          "n_values": 512,
+          "closed": true,
+          "induced_map_size": 512,
+          "G_is_identity": false
+        },
+        {
+          "sector": "attractor_basin",
+          "n_values": 34,
+          "closed": true,
+          "induced_map_size": 34,
+          "G_is_identity": true
+        },
+        {
+          "sector": "translation_orbit",
+          "n_values": 64,
+          "closed": true,
+          "induced_map_size": 64,
+          "G_is_identity": false
+        },
+        {
+          "sector": "density",
+          "n_values": 10,
+          "closed": false,
+          "witness": [
+            3,
+            10
+          ],
+          "witness_render": [
+            "100 / 100 / 000",
+            "010 / 100 / 000"
+          ],
+          "witness_after_render": [
+            "000 / 000 / 100",
+            "100 / 010 / 000"
+          ],
+          "witness_Q_before": [
+            2,
+            2
+          ],
+          "witness_Q_after": [
+            1,
+            2
+          ],
+          "witness_valid": true,
+          "n_leaking_classes": 6
+        },
+        {
+          "sector": "single_cell_0",
+          "n_values": 2,
+          "closed": false,
+          "witness": [
+            0,
+            6
+          ],
+          "witness_render": [
+            "000 / 000 / 000",
+            "000 / 100 / 100"
+          ],
+          "witness_after_render": [
+            "000 / 000 / 000",
+            "100 / 000 / 000"
+          ],
+          "witness_Q_before": [
+            0,
+            0
+          ],
+          "witness_Q_after": [
+            0,
+            1
+          ],
+          "witness_valid": true,
+          "n_leaking_classes": 2
+        },
+        {
+          "sector": "window_cell_0",
+          "n_values": 32,
+          "closed": false,
+          "witness": [
+            1,
+            17
+          ],
+          "witness_render": [
+            "100 / 000 / 000",
+            "100 / 010 / 000"
+          ],
+          "witness_after_render": [
+            "000 / 000 / 000",
+            "010 / 100 / 000"
+          ],
+          "witness_Q_before": [
+            1,
+            1
+          ],
+          "witness_Q_after": [
+            0,
+            10
+          ],
+          "witness_valid": true,
+          "n_leaking_classes": 32
+        }
+      ],
+      "translation_equivariant_violations": 0
+    },
+    {
+      "shape": [
+        2,
+        2,
+        2
+      ],
+      "n_cells": 8,
+      "n_states": 256,
+      "birth": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "resonance": "input_shift",
+      "sectors": [
+        {
+          "sector": "id",
+          "n_values": 256,
+          "closed": true,
+          "induced_map_size": 256,
+          "G_is_identity": false
+        },
+        {
+          "sector": "attractor_basin",
+          "n_values": 66,
+          "closed": true,
+          "induced_map_size": 66,
+          "G_is_identity": true
+        },
+        {
+          "sector": "translation_orbit",
+          "n_values": 46,
+          "closed": true,
+          "induced_map_size": 46,
+          "G_is_identity": false
+        },
+        {
+          "sector": "density",
+          "n_values": 9,
+          "closed": false,
+          "witness": [
+            3,
+            6
+          ],
+          "witness_render": [
+            "10 / 00  ||  10 / 00",
+            "00 / 10  ||  10 / 00"
+          ],
+          "witness_after_render": [
+            "00 / 00  ||  00 / 00",
+            "10 / 00  ||  00 / 10"
+          ],
+          "witness_Q_before": [
+            2,
+            2
+          ],
+          "witness_Q_after": [
+            0,
+            2
+          ],
+          "witness_valid": true,
+          "n_leaking_classes": 5
+        },
+        {
+          "sector": "single_cell_0",
+          "n_values": 2,
+          "closed": false,
+          "witness": [
+            0,
+            6
+          ],
+          "witness_render": [
+            "00 / 00  ||  00 / 00",
+            "00 / 10  ||  10 / 00"
+          ],
+          "witness_after_render": [
+            "00 / 00  ||  00 / 00",
+            "10 / 00  ||  00 / 10"
+          ],
+          "witness_Q_before": [
+            0,
+            0
+          ],
+          "witness_Q_after": [
+            0,
+            1
+          ],
+          "witness_valid": true,
+          "n_leaking_classes": 2
+        },
+        {
+          "sector": "window_cell_0",
+          "n_values": 16,
+          "closed": false,
+          "witness": [
+            1,
+            9
+          ],
+          "witness_render": [
+            "10 / 00  ||  00 / 00",
+            "10 / 00  ||  00 / 10"
+          ],
+          "witness_after_render": [
+            "00 / 00  ||  00 / 00",
+            "00 / 10  ||  10 / 00"
+          ],
+          "witness_Q_before": [
+            1,
+            1
+          ],
+          "witness_Q_after": [
+            0,
+            6
+          ],
+          "witness_valid": true,
+          "n_leaking_classes": 16
+        }
+      ],
+      "translation_equivariant_violations": 0
+    }
+  ],
+  "passed": true
+}

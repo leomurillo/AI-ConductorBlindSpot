@@ -1,0 +1,118 @@
+{
+  "experiment": "P4_current_audit",
+  "parts": {
+    "A_drift_ring": {
+      "resid": {
+        "stationary_resid": 0.0,
+        "adjoint_identity_resid": 1.3877787807814457e-16,
+        "S_selfadjoint_resid": 1.1102230246251565e-16,
+        "A_skew_resid": 5.551115123125783e-17,
+        "J_antisymmetry_resid": 0.0,
+        "J_divergence_resid": 0.0,
+        "normA": 0.7348469228349535,
+        "normJ": 0.1224744871391589,
+        "detailed_balance": false
+      },
+      "reversal": {
+        "S_reversal_diff": 0.0,
+        "J_reversal_sum": 0.0,
+        "J_reversal_diff": 0.2449489742783178
+      },
+      "db_control": {
+        "stationary_resid": 0.0,
+        "adjoint_identity_resid": 1.1102230246251565e-16,
+        "S_selfadjoint_resid": 1.1102230246251565e-16,
+        "A_skew_resid": 0.0,
+        "J_antisymmetry_resid": 0.0,
+        "J_divergence_resid": 0.0,
+        "normA": 0.0,
+        "normJ": 0.0,
+        "detailed_balance": true
+      },
+      "beta_E9": 0.14999999999999997
+    },
+    "B_nonuniform": {
+      "pi": [
+        0.3275862068965516,
+        0.37931034482758635,
+        0.29310344827586193
+      ],
+      "resid": {
+        "stationary_resid": 1.6653345369377348e-16,
+        "adjoint_identity_resid": 4.440892098500626e-16,
+        "S_selfadjoint_resid": 2.220446049250313e-16,
+        "A_skew_resid": 5.551115123125783e-17,
+        "J_antisymmetry_resid": 0.0,
+        "J_divergence_resid": 1.3877787807814457e-16,
+        "normA": 0.20610094822013142,
+        "normJ": 0.135144261670796,
+        "detailed_balance": false
+      },
+      "reversal": {
+        "S_reversal_diff": 0.0,
+        "J_reversal_sum": 0.0,
+        "J_reversal_diff": 0.270288523341592
+      },
+      "conductance_control": {
+        "stationary_resid": 5.551115123125783e-17,
+        "adjoint_identity_resid": 2.220446049250313e-16,
+        "S_selfadjoint_resid": 2.220446049250313e-16,
+        "A_skew_resid": 9.85213768534171e-18,
+        "J_antisymmetry_resid": 0.0,
+        "J_divergence_resid": 2.7755575615628914e-17,
+        "normA": 6.206335383118183e-17,
+        "normJ": 3.925231146709438e-17,
+        "detailed_balance": true
+      }
+    },
+    "C_poole_data": {
+      "labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "pi": [
+        0.9261384865012805,
+        0.0110733290325104,
+        0.016516998025531266,
+        0.01005383848454635,
+        0.01637686939182448,
+        0.009146560319042865,
+        0.002907278165503499,
+        0.0020000000000000057,
+        0.003786640079760711,
+        0.0019999999999999944
+      ],
+      "resid": {
+        "stationary_resid": 1.1102230246251565e-16,
+        "adjoint_identity_resid": 8.881784197001252e-16,
+        "S_selfadjoint_resid": 6.661338147750939e-16,
+        "A_skew_resid": 6.938893903907228e-18,
+        "J_antisymmetry_resid": 0.0,
+        "J_divergence_resid": 7.777456521688986e-17,
+        "normA": 1.0540594193551884,
+        "normJ": 0.020191441409155,
+        "detailed_balance": false
+      },
+      "reversal": {
+        "S_reversal_diff": 1.1775753334250085e-16,
+        "J_reversal_sum": 8.257037746534327e-19,
+        "J_reversal_diff": 0.04038288281831
+      },
+      "topology": {
+        "E": 44,
+        "V": 10,
+        "C": 1,
+        "b1": 35
+      }
+    }
+  },
+  "passed": true
+}

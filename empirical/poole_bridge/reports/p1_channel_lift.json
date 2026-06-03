@@ -1,0 +1,45 @@
+{
+  "experiment": "P1_decoherent_channel_lift",
+  "witnesses": [
+    {
+      "name": "poole_rule_2x2x1_B[3]_S[2, 3]",
+      "d": 16,
+      "cptp_defect": 0.0,
+      "choi_min_eig": 0.0,
+      "diag_face_offdiag": 0.0,
+      "diag_face_vs_pushforward": 0.0,
+      "pointmass_is_rule": 0.0,
+      "coherence_annihilation": 0.0,
+      "superposition_offdiag_before": 0.4999999999999999,
+      "superposition_offdiag_after": 0.0,
+      "superposition_face_vs_pushforward": 0.0
+    },
+    {
+      "name": "hand_noninjective",
+      "d": 8,
+      "cptp_defect": 0.0,
+      "choi_min_eig": 0.0,
+      "diag_face_offdiag": 0.0,
+      "diag_face_vs_pushforward": 0.0,
+      "pointmass_is_rule": 0.0,
+      "coherence_annihilation": 0.0,
+      "superposition_offdiag_before": 0.4999999999999999,
+      "superposition_offdiag_after": 0.0,
+      "superposition_face_vs_pushforward": 0.0
+    },
+    {
+      "name": "permutation",
+      "d": 8,
+      "cptp_defect": 0.0,
+      "choi_min_eig": 0.0,
+      "diag_face_offdiag": 0.0,
+      "diag_face_vs_pushforward": 0.0,
+      "pointmass_is_rule": 0.0,
+      "coherence_annihilation": 0.0,
+      "superposition_offdiag_before": 0.4999999999999999,
+      "superposition_offdiag_after": 0.0,
+      "superposition_face_vs_pushforward": 0.0
+    }
+  ],
+  "passed": true
+}

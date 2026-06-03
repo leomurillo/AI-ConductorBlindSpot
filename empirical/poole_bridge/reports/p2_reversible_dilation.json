@@ -1,0 +1,102 @@
+{
+  "experiment": "P2_reversible_dilation",
+  "dilation": [
+    {
+      "name": "poole_rule_2x2x1",
+      "d": 16,
+      "unitary": true,
+      "unitarity_defect": 0.0,
+      "init_state_index_err": 0,
+      "marginal_vs_pushforward": 0.0
+    },
+    {
+      "name": "permutation",
+      "d": 8,
+      "unitary": true,
+      "unitarity_defect": 0.0,
+      "init_state_index_err": 0,
+      "marginal_vs_pushforward": 0.0
+    },
+    {
+      "name": "hand_noninjective",
+      "d": 8,
+      "unitary": true,
+      "unitarity_defect": 0.0,
+      "init_state_index_err": 0,
+      "marginal_vs_pushforward": 0.0
+    }
+  ],
+  "obstruction": [
+    {
+      "name": "poole_rule_2x2x1",
+      "d": 16,
+      "injective": false,
+      "image_size": 4,
+      "domain_size": 16,
+      "collisions": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "target_gram_rank": 4,
+      "rank_deficiency": 12,
+      "same_space_unitary_exists": false,
+      "same_space_unitary_defect": null,
+      "same_space_maps_F": null
+    },
+    {
+      "name": "permutation",
+      "d": 8,
+      "injective": true,
+      "image_size": 8,
+      "domain_size": 8,
+      "collisions": [],
+      "target_gram_rank": 8,
+      "rank_deficiency": 0,
+      "same_space_unitary_exists": true,
+      "same_space_unitary_defect": 0.0,
+      "same_space_maps_F": 0
+    },
+    {
+      "name": "hand_noninjective",
+      "d": 8,
+      "injective": false,
+      "image_size": 6,
+      "domain_size": 8,
+      "collisions": [
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "target_gram_rank": 6,
+      "rank_deficiency": 2,
+      "same_space_unitary_exists": false,
+      "same_space_unitary_defect": null,
+      "same_space_maps_F": null
+    }
+  ],
+  "poole_is_injective": false,
+  "passed": true
+}
