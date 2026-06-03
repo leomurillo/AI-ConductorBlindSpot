@@ -418,6 +418,13 @@ Rooke's canonical engine (`PooleEngine.step`, Delta RPM Protocol) is transcribed
 torch-free into `otg_rule.py` and certified in P6. We never run his torch code; we
 read it and reimplement it in numpy, then prove the reimplementation faithful.
 
+*License note.* Rooke's repository is All-Rights-Reserved, so the engine
+transcription `otg_rule.py` is **not redistributed** in this public repo; it is
+license-gated pending his written permission, and P6 is excluded from the public
+gate. The results below are our own academic output from running the rule, reported
+with attribution to **Rooke Alan Poole, "The Poole Manifold" (2026)**. Reproducing
+P6 requires obtaining his engine and supplying a compatible `otg_rule.py` locally.
+
 **Faithfulness.** P6 reproduces his own canonical unit tests bit-for-bit — the
 vacuum stays empty, and the core of a solid `3x3x3` block evaporates (its 26 live
 neighbours exceed `S_HIGH = 9`) — and confirms the exact effective integer rule

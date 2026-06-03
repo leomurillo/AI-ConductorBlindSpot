@@ -43,11 +43,24 @@ SCRIPTS = [
 
 
 def main() -> int:
+    skipped = []
     for s in SCRIPTS:
         print("\n" + "#" * 78)
         print(f"# {s}")
         print("#" * 78)
-        runpy.run_path(str(HERE / s), run_name="__main__")
+        try:
+            runpy.run_path(str(HERE / s), run_name="__main__")
+        except (ImportError, ModuleNotFoundError, FileNotFoundError) as e:
+            # P6 runs on Rooke Poole's actual engine, `otg_rule.py`, which is a
+            # transcription of his All-Rights-Reserved code and is therefore NOT
+            # redistributed in this public repo (pending the author's permission).
+            # On a clone without it, P6 is skipped and P1-P5 constitute the gate.
+            if s == "p6_otg_real_rule.py":
+                print(f"SKIPPED {s}: requires Rooke's engine `otg_rule.py`, which is "
+                      f"license-gated and not shipped here. See README. ({type(e).__name__})")
+                skipped.append(s)
+            else:
+                raise
 
     # ---- post-hoc gate over the JSON outputs -------------------------------
     ok = True
@@ -111,21 +124,28 @@ def main() -> int:
     # P6 — the same bridge on ROOKE'S ACTUAL B5-7/S5-9 rule (Obligation 1 discharged):
     # his unit tests reproduced, effective rule B{5,6}/S{5,6,7,8,9}, closure decided per
     # sector with valid leakage witnesses, and the succession flux shown to be a symmetric
-    # scalar (S reversal-invariant) blind to the genuine current A (the arrow).
-    p6 = json.loads((HERE / "reports" / "p6_otg_real_rule.json").read_text())
-    f6, ca6 = p6["faithfulness"], p6["current_audit"]
-    if not (p6["passed"]
-            and f6["vacuum_stays_empty"] and f6["overpopulation_core_evaporates"]
-            and f6["effective_birth"] == [5, 6] and f6["effective_survive"] == [5, 6, 7, 8, 9]
-            and all(inst["translation_equivariant_violations"] == 0
-                    and inst["batch_vs_stepint"] == 0
-                    and next(r for r in inst["sectors"] if r["sector"] == "density")["witness_valid"]
-                    for inst in p6["closure"])
-            and ca6["adjoint_resid"] < 1e-12 and ca6["J_div_resid"] < 1e-12
-            and ca6["normA"] > 1e-3 and not ca6["detailed_balance"]
-            and ca6["S_reversal_diff"] < 1e-12 and ca6["J_reversal_diff"] > 1e-3):
-        print("FAIL: P6 real-rule (OTG) checks not met")
-        ok = False
+    # scalar (S reversal-invariant) blind to the genuine current A (the arrow). This runs
+    # only where the license-gated engine `otg_rule.py` is present (see README); on the
+    # public repo it is skipped and P1-P5 are the gate.
+    p6_json = HERE / "reports" / "p6_otg_real_rule.json"
+    if "p6_otg_real_rule.py" not in skipped and p6_json.exists():
+        p6 = json.loads(p6_json.read_text())
+        f6, ca6 = p6["faithfulness"], p6["current_audit"]
+        if not (p6["passed"]
+                and f6["vacuum_stays_empty"] and f6["overpopulation_core_evaporates"]
+                and f6["effective_birth"] == [5, 6] and f6["effective_survive"] == [5, 6, 7, 8, 9]
+                and all(inst["translation_equivariant_violations"] == 0
+                        and inst["batch_vs_stepint"] == 0
+                        and next(r for r in inst["sectors"] if r["sector"] == "density")["witness_valid"]
+                        for inst in p6["closure"])
+                and ca6["adjoint_resid"] < 1e-12 and ca6["J_div_resid"] < 1e-12
+                and ca6["normA"] > 1e-3 and not ca6["detailed_balance"]
+                and ca6["S_reversal_diff"] < 1e-12 and ca6["J_reversal_diff"] > 1e-3):
+            print("FAIL: P6 real-rule (OTG) checks not met")
+            ok = False
+    else:
+        print("NOTE: P6 (real-rule) skipped — license-gated engine not present; "
+              "P1-P5 constitute the public gate.")
 
     print("\n" + "=" * 78)
     print("ALL POOLE-BRIDGE CERTIFICATES PASSED" if ok else "SOME CHECKS FAILED")

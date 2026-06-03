@@ -7,6 +7,15 @@ the real thing: the canonical B5-7/S5-9 prime-resonance engine transcribed in
 `otg_rule.py` from the Delta RPM Protocol master engine of
     github.com/rookepoole/SVP-OTG-Poole-Manifold-tests.
 
+LICENSE NOTE. Rooke Poole's repository is "All Rights Reserved" (see his LICENSE).
+`otg_rule.py` is a transcription of his engine and is therefore NOT redistributed
+in this public repo pending the author's written permission; this script is kept
+for provenance but is license-gated and excluded from the public `run_all.py` gate.
+To run it, obtain his engine and supply a compatible `otg_rule.py` locally. The
+*results* reported here (closure verdicts, current norms) are our own academic
+output, computed by running the rule, and are attributed to Rooke Alan Poole,
+"The Poole Manifold" (2026).
+
 It does three things, all numpy-exact (his torch engine is read, never run):
 
   [Faithfulness]  reproduce his own canonical unit tests (vacuum survival,
