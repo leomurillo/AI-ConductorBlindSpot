@@ -1,0 +1,16 @@
+{
+  "experiment": "E6_grokking_bridge",
+  "task": "control",
+  "p": 113,
+  "device": "cuda",
+  "modulus_kind": "prime",
+  "n_triples_cross": 0,
+  "grok_step": null,
+  "steps_run": 40000,
+  "steps_cap": 40000,
+  "wd": 1.0,
+  "lr": 0.001,
+  "frac_train": 0.3,
+  "metrics_jsonl": "/home/leomu/AI-ConductorBlindSpot/empirical/apex_recovery/reports/e6_control_p113_metrics.jsonl",
+  "prediction": "D (embedding Fourier), S (logit additivity), and rho_x (cross-packet cubic, composite n only) rise together at the grok and track val acc; all flat on the control. rho_x trajectory = CBS Conjecture 5.8."
+}

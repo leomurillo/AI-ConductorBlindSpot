@@ -1,0 +1,72 @@
+{
+  "experiment": "E15_efficient_betti",
+  "passed": true,
+  "partA": [
+    {
+      "name": "tri-torus L=10",
+      "V": 100,
+      "E": 300,
+      "T": 200,
+      "b1": 2,
+      "true": 2,
+      "t": 0.035932400001911446
+    },
+    {
+      "name": "tri-torus L=20",
+      "V": 400,
+      "E": 1200,
+      "T": 800,
+      "b1": 2,
+      "true": 2,
+      "t": 0.07973970001330599
+    },
+    {
+      "name": "tri-torus L=30",
+      "V": 900,
+      "E": 2700,
+      "T": 1800,
+      "b1": 2,
+      "true": 2,
+      "t": 0.15987200001836754
+    },
+    {
+      "name": "tri-torus L=40",
+      "V": 1600,
+      "E": 4800,
+      "T": 3200,
+      "b1": 2,
+      "true": 2,
+      "t": 0.4411784000112675
+    },
+    {
+      "name": "sphere (hull)",
+      "V": 300,
+      "E": 894,
+      "T": 596,
+      "b1": 0,
+      "true": 0,
+      "t": 0.014963099994929507
+    },
+    {
+      "name": "two disjoint tori",
+      "V": 288,
+      "E": 864,
+      "T": 576,
+      "b1": 4,
+      "true": 4,
+      "t": 0.02688540000235662
+    }
+  ],
+  "partB_frontier": {
+    "circle_flag_b1_by_k": {
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "6": 0,
+      "8": 1
+    },
+    "clifford_flag_b1_k8": 10,
+    "note": "single-scale flag complex on raw samples is unreliable (sampling gaps break loops; triangles fill them; surfaces get phantom loops). Faithful complex = alpha/persistence (GUDHI/ripser) offline; b_1 = sparse-Hodge nullity (Part A)."
+  },
+  "figure": null
+}

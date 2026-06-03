@@ -1,0 +1,21 @@
+{
+  "experiment": "E11_trained_two_encoder",
+  "_environment": "GCP cbs-e11 (Debian 12, e2-standard-4, CPU); torch 2.12.0+cpu, numpy 2.4.6; run 2026-06-02 (laptop torch ban -> GCP)",
+  "n": 12,
+  "q": 0.5,
+  "b": 0.2,
+  "beta_truth": 0.14999999999999997,
+  "single_encoder": {
+    "loss": 0.37810957431793213,
+    "loss_rev": 0.37353625893592834,
+    "loss_gap": 0.004573315382003784,
+    "procrustes_W_vs_Wrev": 0.015659380704164505
+  },
+  "two_encoder": {
+    "beta_W": 0.17045362293720245,
+    "beta_Wrev_same_gauge": -0.17025741934776306,
+    "magnitude_recovered": true,
+    "flips_under_reversal": true
+  },
+  "passed": true
+}

@@ -9,16 +9,28 @@ The manuscript proves that the curvature model used by every purely second-order
 
 This repository contains the scripts that produce every empirical number, table, and figure in the paper, together with the run outputs they produced.
 
-It also hosts the **sibling preprint** — *Beyond the Conductor Blind Spot: Eigenfunction Identifiability and Planning in Non-Gaussian Worlds* (`BeyondTheConductorBlindSpot.md` / `.pdf`) — the continuous theory of what a self-supervised representation recovers when the world is not Gaussian, with its own self-contained certificate suite in [`empirical/apex_recovery/`](empirical/apex_recovery/).
+It also hosts the **continuous-theory papers** that grow out of the conductor blind spot — what a self-supervised representation recovers when the world is not Gaussian, and when it cannot see the arrow of time:
+
+* *Beyond the Conductor Blind Spot: Eigenfunction Identifiability and Planning in Non-Gaussian Worlds* (`BeyondTheConductorBlindSpot.md` / `.pdf`) — the **cumulant axis**: a linear probe of the representation is complete only on the Gaussian stratum; off it, recovery is exact but through a curved (Koopman) chart.
+* *The Irreversible Blind Spot: Why Symmetric Self-Supervised Objectives Cannot See the Arrow of Time* (`IrreversibleBlindSpot.md` / `.pdf`) — the **reversibility axis**: the single-encoder objective is a functional of the symmetric part of the transition operator alone; the antisymmetric current (the arrow of time) is in its kernel, and a predictor (two-encoder) objective lifts the blind spot.
+* *Curvature and Current: The Two Blind Spots of Self-Supervised Representation Learning* (`CurvatureAndCurrent.md` / `.pdf`) — the **unified** paper: the two axes are independent components of one operator `T = S + A`, dialable with zero cross-talk.
+
+All three share the self-contained certificate suite in [`empirical/apex_recovery/`](empirical/apex_recovery/) (E1–E16, one-command `run_all.py` with a pass/fail gate).
 
 ## Layout
 
 ```
 ConductorBlindSpot.md             Manuscript source (Markdown; Pandoc → LaTeX → PDF)
 ConductorBlindSpot.pdf            Compiled manuscript
-BeyondTheConductorBlindSpot.md    Sibling manuscript (non-Gaussian recovery & planning)
-BeyondTheConductorBlindSpot.pdf   Compiled sibling manuscript
+BeyondTheConductorBlindSpot.md    Cumulant-axis paper (non-Gaussian recovery & planning)
+BeyondTheConductorBlindSpot.pdf   Compiled
+IrreversibleBlindSpot.md          Reversibility-axis paper (the arrow of time; the predictor)
+IrreversibleBlindSpot.pdf         Compiled
+CurvatureAndCurrent.md            Unified paper (two blind spots of one operator T = S + A)
+CurvatureAndCurrent.pdf           Compiled
 build.ps1 / build.sh / BUILD.md   Build scripts (take the source .md as an argument)
+receipts.py / RECEIPTS.sha256     Provenance + reproducible-result SHA-256 receipts
+SHA256SUMS.txt                    Plain SHA-256 provenance (sources, results, PDFs)
 docs/                            Reproducibility, validation, source, and claims docs
 latex/preamble.tex                Shared LaTeX preamble used by both builds
 Paper abstracts/                  External-paper abstract notes used while writing
@@ -29,30 +41,48 @@ empirical/
   paper34_layer3_cubic_experiment.py      §8.6: three head-only cubic-aware interventions
   reports/                                Run outputs (JSON / Markdown / PNG)
   pythia_rho_x_sweep/                     §6.6: Pythia checkpoint sweep
-  apex_recovery/                          Sibling-paper certificate suite (own README)
+  apex_recovery/                          Continuous-theory certificate suite E1–E16 (own README)
     apex_world.py                         shared toolkit (reversible-chain eigenproblem)
-    e1_eigenfunction_recovery.py          §6.1 exact recovery + Gaussian boundary
-    e2_approximate_bound.py               §6.2 approximate-recovery bound
-    e3_hankel_reconstruction.py           §6.3 exact distributional tower + blind-spot counts
-    e4_cross_register_bridge.py           §6.4 measured square law (log–log slope 2)
-    e5_real_model_bridge.py               §6.5 real-model depth profile (opt.: torch+transformers)
-    e6_grokking_bridge.py                 §7 grokking testbed (forward experiment)
-    run_all.py                            one-command runner + self-check gate
+    e1_eigenfunction_recovery.py          curvature: exact recovery + Gaussian boundary
+    e2_approximate_bound.py               curvature: approximate-recovery bound + gap (G)
+    e3_hankel_reconstruction.py           curvature: distributional tower + blind-spot counts
+    e4_cross_register_bridge.py           curvature: measured square law (log–log slope 2)
+    e5_real_model_bridge.py               curvature: real-model depth profile (opt.: torch+transformers)
+    e6_grokking_bridge.py                 curvature: grokking co-emergence testbed (opt.: torch)
+    e7_planning_certificate.py            curvature: planning faithfulness (Prop 1 + Thm 4)
+    e8_trained_encoder.py                 curvature: SGD reaches the slow-feature chart (opt.: torch)
+    e9_irreversible_ring.py               current: irreversible blind spot on the drift ring
+    e10_nonnormal_svd.py                  current: non-normal SVD — two charts + irreversibility gap
+    e11_trained_two_encoder.py            current: SGD reaches the predictor (opt.: torch)
+    e12_topological_blindspot.py          current: dim(arrow) = cycle rank β₁, refining to Hodge b₁
+    e13_estimating_the_arrow.py           both: Δ estimable from samples; b₁ is an offline audit
+    e14_two_axes.py                       both: the two axes are orthogonal (zero cross-talk)
+    e15_efficient_betti.py                current: sparse-Hodge b₁ engine (exact, sub-second)
+    e16_pointcloud_betti.py               current: faithful complex from samples (opt.: GUDHI)
+    run_all.py                            one-command runner + pass/fail gate (E1–E4,E7,E9,E10,E12–E15)
     reports/                              JSON certificates + figures
 ```
 
-### Sibling suite: Beyond the Conductor Blind Spot
+### Certificate suite: the continuous theory (E1–E16)
 
-`empirical/apex_recovery/` holds the certificates for the sibling preprint —
-the continuous theory of what a self-supervised representation recovers when
-the world is not Gaussian (exact recovery, the approximate-recovery bound, the
-exact distributional tower, the measured cross-register square law, and a
-real-model depth profile). It is self-contained with its own
+`empirical/apex_recovery/` holds the certificates for the continuous-theory
+papers above, across both axes: the **cumulant axis** (exact recovery and the
+Gaussian boundary, the approximate-recovery bound, the distributional tower, the
+measured cross-register square law, a real-model depth profile, planning
+faithfulness, and a trained-encoder confirmation) and the **reversibility axis**
+(the irreversible blind spot on the drift ring, the non-normal SVD with two
+charts and the irreversibility gap, the topological cycle-rank/Betti dimension of
+the arrow, what is cheaply estimable, the orthogonality of the two axes, and an
+efficient end-to-end `b₁` audit). It is self-contained with its own
 [`README.md`](empirical/apex_recovery/README.md) and one-command runner
-`python empirical/apex_recovery/run_all.py` (E1–E4 need only `numpy`/`scipy`/`sympy`;
-E5 optionally `torch`+`transformers`). Its `e3` certificate regenerates this
-manuscript's Section 4 cross-packet cubic counts (`18, 42, 108, 252, 774`)
-exactly, tying the two papers together.
+`python empirical/apex_recovery/run_all.py` — a deterministic pass/fail gate over
+E1–E4, E7, E9, E10, E12–E15 (needs only `numpy`/`scipy`/`sympy`); E5/E8/E11 add
+`torch`, E16 adds a TDA library (GUDHI), and E6 is a `torch` grokking testbed —
+all runnable, all outside the dependency-light gate. The `e3` certificate
+regenerates the conductor blind spot's Section 4 cross-packet cubic counts
+(`18, 42, 108, 252, 774`) exactly, tying the finite and continuous results
+together; provenance for every script and result is hashed in `RECEIPTS.sha256`
+(verify with `python receipts.py --check`).
 
 ## Manuscript ↔ artifact map
 

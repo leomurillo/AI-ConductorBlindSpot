@@ -1,0 +1,65 @@
+{
+  "experiment": "E13_estimating_the_arrow",
+  "passed": true,
+  "partA": {
+    "delta_exact": 0.0215083458085914,
+    "rows": [
+      {
+        "m": 1000,
+        "mean": 0.022059081901165102,
+        "std": 0.003045443124655654,
+        "rel_err": 0.025605692668085753
+      },
+      {
+        "m": 5000,
+        "mean": 0.021674181552466188,
+        "std": 0.0015350253189956545,
+        "rel_err": 0.007710297451538346
+      },
+      {
+        "m": 20000,
+        "mean": 0.021355583329888007,
+        "std": 0.0006452478161034805,
+        "rel_err": 0.007102474549315337
+      },
+      {
+        "m": 100000,
+        "mean": 0.021550921416106306,
+        "std": 0.00029503644657665173,
+        "rel_err": 0.0019794924209326865
+      }
+    ],
+    "passed": true
+  },
+  "partB": {
+    "rows": {
+      "circle": {
+        "true": 1,
+        "naive_by_k": {
+          "6": 0,
+          "9": 1,
+          "12": 1
+        }
+      },
+      "torus": {
+        "true": 2,
+        "naive_by_k": {
+          "6": 47,
+          "9": 19,
+          "12": 13
+        }
+      },
+      "sphere": {
+        "true": 0,
+        "naive_by_k": {
+          "6": 31,
+          "9": 19,
+          "12": 9
+        }
+      }
+    },
+    "note": "single-scale flag-complex b_1 is wrong/scale-dependent for 2D; exact Vietoris-Rips persistence is super-linear and times out on a few hundred points (exit 124 @120s) -> topology is an OFFLINE, sub-sampled audit, not an in-loop computation.",
+    "torus_naive_never_2": true
+  },
+  "figure": null
+}

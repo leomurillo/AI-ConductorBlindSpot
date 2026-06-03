@@ -1,0 +1,78 @@
+{
+  "experiment": "E9_irreversible_blind_spot",
+  "checks": {
+    "identity_resid": 3.3306690738754696e-16,
+    "antisym_quadform_resid": 2.0816681711721685e-17,
+    "S_reversal_diff": 1.9229626863835638e-16,
+    "T_reversal_diff": 1.469693845669907,
+    "loss_reversal_gap": 8.881784197001252e-16,
+    "slow_eig_closedform_vs_numeric": 4.449557262054371e-16,
+    "arrow_sign_matches_drift": true,
+    "predictor_block_err": 1.1443916996305594e-16,
+    "predictor_sym_is_alpha_I": 1.1274368112207335e-16,
+    "predictor_reversal_diff": 0.4242640687119285,
+    "reversible_normA": 0.0,
+    "reversible_predictor_antisym": 0.0,
+    "sweep_objective_spread": 0.0,
+    "sweep_arrow_range": 0.3499999999999999
+  },
+  "cases": [
+    {
+      "name": "canonical",
+      "n": 12,
+      "q": 0.5,
+      "b": 0.2,
+      "alpha": 0.9062177826491071,
+      "beta": 0.14999999999999997,
+      "normA": 0.7348469228349535,
+      "B": [
+        [
+          0.9062177826491072,
+          0.14999999999999994
+        ],
+        [
+          -0.14999999999999997,
+          0.9062177826491071
+        ]
+      ],
+      "B_reversal_diff": 0.4242640687119285
+    },
+    {
+      "name": "cbs_moduli",
+      "rows": [
+        {
+          "n": 6,
+          "identity_resid": 0.0,
+          "beta": 0.25980762113533157,
+          "beta_from_predictor": 0.2598076211353316
+        },
+        {
+          "n": 8,
+          "identity_resid": 1.1102230246251565e-16,
+          "beta": 0.21213203435596426,
+          "beta_from_predictor": 0.21213203435596428
+        },
+        {
+          "n": 12,
+          "identity_resid": 5.551115123125783e-17,
+          "beta": 0.14999999999999997,
+          "beta_from_predictor": 0.14999999999999997
+        },
+        {
+          "n": 18,
+          "identity_resid": 0.0,
+          "beta": 0.10260604299770061,
+          "beta_from_predictor": 0.10260604299770061
+        },
+        {
+          "n": 30,
+          "identity_resid": 5.551115123125783e-17,
+          "beta": 0.062373507245327794,
+          "beta_from_predictor": 0.06237350724532782
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "figure": null
+}

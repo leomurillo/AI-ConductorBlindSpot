@@ -1,0 +1,86 @@
+{
+  "experiment": "E10_nonnormal_svd",
+  "checks": {
+    "conveyor_nonnormality": 0.9740636529508737,
+    "identity_resid": 4.440892098500626e-16,
+    "leftright_angles_deg": [
+      3.511490741792474,
+      19.991819197711358,
+      59.90990742264679
+    ],
+    "leftright_split_max_deg": 59.90990742264679,
+    "svd_achieves_sumsigma": 1.3322676295501878e-15,
+    "svd_is_optimum": true,
+    "irreversibility_gap": 0.3962758057065132,
+    "fan_hoffman_holds": true,
+    "reversal_swaps_charts_maxdeg": 1.4787793334710982e-06,
+    "ring_nonnormality": 1.9229626863835638e-16,
+    "ring_leftright_angle_maxdeg": 1.2074182697257333e-06,
+    "ring_gap": 0.02466069738315646,
+    "reversible_gap": 0.0,
+    "reversible_split_maxdeg": 0.0
+  },
+  "cases": [
+    {
+      "name": "conveyor",
+      "n": 8,
+      "a": [
+        0.2,
+        0.5,
+        0.8,
+        0.3,
+        0.6,
+        0.9,
+        0.4,
+        0.7
+      ],
+      "sigma": [
+        0.9716302868629264,
+        0.9434876082275065,
+        0.803094328778379
+      ],
+      "lambda_S": [
+        0.8955139653062862,
+        0.8475324625160714,
+        0.5788899903399409
+      ],
+      "Delta": 0.3962758057065132,
+      "leftright_angles": [
+        3.511490741792474,
+        19.991819197711358,
+        59.90990742264679
+      ]
+    },
+    {
+      "name": "cbs_moduli",
+      "rows": [
+        {
+          "n": 6,
+          "nonnormality": 1.0831204919121418,
+          "Delta": 0.8305367390514573,
+          "leftright_maxdeg": 83.04237888492887
+        },
+        {
+          "n": 8,
+          "nonnormality": 1.1263658375501273,
+          "Delta": 0.497030433373578,
+          "leftright_maxdeg": 62.77984528092753
+        },
+        {
+          "n": 12,
+          "nonnormality": 1.5317636893463693,
+          "Delta": 0.2838944567520496,
+          "leftright_maxdeg": 43.911371261576754
+        },
+        {
+          "n": 18,
+          "nonnormality": 1.8760197227108244,
+          "Delta": 0.1515707639234809,
+          "leftright_maxdeg": 35.74306863672968
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "figure": null
+}

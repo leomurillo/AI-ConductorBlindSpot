@@ -1,6 +1,6 @@
 {
   "experiment": "E2_approximate_bound",
-  "figure": null,
+  "figure": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e2_bound_scatter.png",
   "product_world": "gaussian x laplace",
   "partA_gap": {
     "gamma": 0.022431874294470466,

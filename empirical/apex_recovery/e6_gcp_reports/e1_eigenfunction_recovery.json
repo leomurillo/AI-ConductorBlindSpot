@@ -45,17 +45,17 @@
     }
   ],
   "mixing_invariance_L2pi": {
-    "gaussian": 4.1235014684309724e-13,
-    "laplace": 6.173051225846178e-13,
-    "bimodal": 9.33245516763091e-13,
+    "gaussian": 4.1228080165309303e-13,
+    "laplace": 6.173247707933337e-13,
+    "bimodal": 9.332369941442306e-13,
     "uniform": 7.831918496242124e-13
   },
   "known_ground_truth_warp": {
     "warp": "z = g^3,  ground-truth phi_1(z) = cbrt(z)",
-    "recovered_vs_truth_L2pi": 0.0025201147472371046,
+    "recovered_vs_truth_L2pi": 0.0025201147472370972,
     "linear_probe_R2_on_z": 0.607651,
     "phi1_affine_in_g_nu": 6.36e-06
   },
-  "figure": null,
+  "figure": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e1_eigenfunctions.png",
   "takeaway": "phi_1 affine <=> Gaussian (LeJEPA); monotone-nonlinear otherwise (ours). Recovery is intrinsic to the transition operator."
 }

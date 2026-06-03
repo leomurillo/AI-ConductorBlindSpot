@@ -263,5 +263,5 @@
     }
   },
   "takeaway": "nu_D \u221d (leading nonzero cumulant)^2; order 3 for skewed (CBS-cubic order), order 4 for symmetric; ring structure keeps order-3 alive at the symmetric point via the Amari-Chentsov tensor's cross-packet components.",
-  "figure": null
+  "figure": "C:\\Projects\\ConductorBlindSpot\\empirical\\apex_recovery\\reports\\e4_bridge.png"
 }

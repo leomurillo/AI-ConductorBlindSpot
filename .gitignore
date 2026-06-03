@@ -7,4 +7,12 @@ build/*.toc
 build/*.xdv
 build/*.fls
 build/*.fdb_latexmk
+build/_body.md
 .DS_Store
+
+# Cloned upstream fork used only for the docxology claims-audit review
+# (its own git repo; not part of this paper's repository).
+docxology/
+
+# Zenodo/release bundle — regenerable from the tracked sources; kept local.
+BeyondCBS.zip

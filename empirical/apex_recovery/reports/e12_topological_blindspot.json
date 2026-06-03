@@ -1,0 +1,100 @@
+{
+  "experiment": "E12_topological_blindspot",
+  "graphs": [
+    {
+      "name": "ring C6",
+      "V": 6,
+      "E": 6,
+      "beta1": 1,
+      "beta1_three_ways": {
+        "combinatorial": 1,
+        "nullity": 1,
+        "non_tree_edges": 1
+      },
+      "beta1_agree": true,
+      "recovered_dim": 1,
+      "single_encoder_invariance": 0.0,
+      "A_in_cycle_space_residual": 0.0,
+      "current_recover_err": 1.3877787807814457e-17,
+      "kirchhoff_residual": 0.0,
+      "S_unchanged": true,
+      "irreversibility_gap": 0.0009477652024321159,
+      "passed": true
+    },
+    {
+      "name": "theta",
+      "V": 4,
+      "E": 5,
+      "beta1": 2,
+      "beta1_three_ways": {
+        "combinatorial": 2,
+        "nullity": 2,
+        "non_tree_edges": 2
+      },
+      "beta1_agree": true,
+      "recovered_dim": 2,
+      "single_encoder_invariance": 0.0,
+      "A_in_cycle_space_residual": 2.943923360032078e-17,
+      "current_recover_err": 1.5515838457795457e-17,
+      "kirchhoff_residual": 1.3877787807814457e-17,
+      "S_unchanged": true,
+      "irreversibility_gap": 0.02637963444461633,
+      "passed": true
+    },
+    {
+      "name": "K4",
+      "V": 4,
+      "E": 6,
+      "beta1": 3,
+      "beta1_three_ways": {
+        "combinatorial": 3,
+        "nullity": 3,
+        "non_tree_edges": 3
+      },
+      "beta1_agree": true,
+      "recovered_dim": 3,
+      "single_encoder_invariance": 0.0,
+      "A_in_cycle_space_residual": 0.0,
+      "current_recover_err": 9.813077866773595e-18,
+      "kirchhoff_residual": 0.0,
+      "S_unchanged": true,
+      "irreversibility_gap": 0.00361284708956755,
+      "passed": true
+    },
+    {
+      "name": "torus 3x3",
+      "V": 9,
+      "E": 18,
+      "beta1": 10,
+      "beta1_three_ways": {
+        "combinatorial": 10,
+        "nullity": 10,
+        "non_tree_edges": 10
+      },
+      "beta1_agree": true,
+      "recovered_dim": 10,
+      "single_encoder_invariance": 0.0,
+      "A_in_cycle_space_residual": 8.628614662542402e-17,
+      "current_recover_err": 5.2295871126209393e-17,
+      "kirchhoff_residual": 6.938893903907228e-18,
+      "S_unchanged": true,
+      "irreversibility_gap": 0.1088391953940211,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "reversible_control_gap": 0.0,
+  "betti_refinement": {
+    "torus T^2": {
+      "beta1_graph": 10,
+      "b1_filled": 2,
+      "d1d2": 0.0
+    },
+    "sphere S^2 (K4)": {
+      "beta1_graph": 3,
+      "b1_filled": 0,
+      "d1d2": 0.0
+    }
+  },
+  "figure": null
+}
